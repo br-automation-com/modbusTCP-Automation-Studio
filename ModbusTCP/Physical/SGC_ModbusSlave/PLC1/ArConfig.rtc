@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.90.25 SP07?>
+<RuntimeConfiguration Version="2.32.22">
+  <Module ID="IF4" Hardware="X20CP0292 (X2x)" />
+  <Module ID="IF4.ST0" Hardware="X20PS9500">
+    <Selector ID="FunctionModel" Value="Standard">
+      <Group ID="General">
+        <Parameter ID="Supervision" Value="on" />
+        <Parameter ID="ModuleInfo" Value="off" />
+        <Parameter ID="StatusInfo" Value="on" />
+        <Parameter ID="PowerInfo" Value="off" />
+      </Group>
+    </Selector>
+  </Module>
+</RuntimeConfiguration>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="3.0.90.21 SP03"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="AcknowledgeState_short">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="3"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="87335" Value="A"/>
+    <Text ID="87336" Value="nA"/>
+    <Text ID="87337" Value="RA"/>
+    <Text ID="87338" Value="AR"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="87335" Value="A"/>
+    <Text ID="87336" Value="nA"/>
+    <Text ID="87337" Value="RA"/>
+    <Text ID="87338" Value="AR"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="87335" Value="0"/>
+    <Index ID="87336" Value="1"/>
+    <Index ID="87337" Value="2"/>
+    <Index ID="87338" Value="3"/>
+  </IndexMap>
+</TextGroup>

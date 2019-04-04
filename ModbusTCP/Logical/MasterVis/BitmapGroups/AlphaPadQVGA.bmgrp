@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="3.0.90.21 SP03"?>
+<BitmapGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="AlphaPadQVGA">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="0"/>
+  <Property Name="Translate" Value="True"/>
+  <BitmapLayer LanguageId="en">
+    <BitmapRef ID="2" Value="Source[local].Bitmap[AlphaPadQVGA1]"/>
+    <BitmapRef ID="5" Value="Source[local].Bitmap[AlphaPadQVGA1]"/>
+    <BitmapRef ID="6" Value="Source[local].Bitmap[AlphaPadQVGA2]"/>
+    <BitmapRef ID="11" Value="Source[local].Bitmap[AlphaPadQVGA2]"/>
+    <BitmapRef ID="12" Value="Source[local].Bitmap[AlphaPadQVGA3]"/>
+    <BitmapRef ID="13" Value="Source[local].Bitmap[AlphaPadQVGA3]"/>
+    <BitmapRef ID="16" Value="Source[local].Bitmap[AlphaPadQVGA1_pressed]"/>
+    <BitmapRef ID="17" Value="Source[local].Bitmap[AlphaPadQVGA1_pressed]"/>
+    <BitmapRef ID="18" Value="Source[local].Bitmap[AlphaPadQVGA2_pressed]"/>
+    <BitmapRef ID="19" Value="Source[local].Bitmap[AlphaPadQVGA2_pressed]"/>
+    <BitmapRef ID="20" Value="Source[local].Bitmap[AlphaPadQVGA3_pressed]"/>
+    <BitmapRef ID="21" Value="Source[local].Bitmap[AlphaPadQVGA3_pressed]"/>
+  </BitmapLayer>
+  <BitmapLayer LanguageId="de">
+    <BitmapRef ID="2" Value="Source[local].Bitmap[AlphaPadQVGA1]"/>
+    <BitmapRef ID="5" Value="Source[local].Bitmap[AlphaPadQVGA1]"/>
+    <BitmapRef ID="6" Value="Source[local].Bitmap[AlphaPadQVGA2]"/>
+    <BitmapRef ID="11" Value="Source[local].Bitmap[AlphaPadQVGA2]"/>
+    <BitmapRef ID="12" Value="Source[local].Bitmap[AlphaPadQVGA3]"/>
+    <BitmapRef ID="13" Value="Source[local].Bitmap[AlphaPadQVGA3]"/>
+    <BitmapRef ID="16" Value="Source[local].Bitmap[AlphaPadQVGA1_pressed]"/>
+    <BitmapRef ID="17" Value="Source[local].Bitmap[AlphaPadQVGA1_pressed]"/>
+    <BitmapRef ID="18" Value="Source[local].Bitmap[AlphaPadQVGA2_pressed]"/>
+    <BitmapRef ID="19" Value="Source[local].Bitmap[AlphaPadQVGA2_pressed]"/>
+    <BitmapRef ID="20" Value="Source[local].Bitmap[AlphaPadQVGA3_pressed]"/>
+    <BitmapRef ID="21" Value="Source[local].Bitmap[AlphaPadQVGA3_pressed]"/>
+  </BitmapLayer>
+  <IndexMap>
+    <Index ID="2" Value="0"/>
+    <Index ID="5" Value="1"/>
+    <Index ID="6" Value="2"/>
+    <Index ID="11" Value="3"/>
+    <Index ID="12" Value="4"/>
+    <Index ID="13" Value="5"/>
+    <Index ID="16" Value="6"/>
+    <Index ID="17" Value="7"/>
+    <Index ID="18" Value="8"/>
+    <Index ID="19" Value="9"/>
+    <Index ID="20" Value="10"/>
+    <Index ID="21" Value="11"/>
+  </IndexMap>
+</BitmapGroup>

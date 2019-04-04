@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.90.37 SP19?>
+<Physical xmlns="http://br-automation.co.at/AS/Physical">
+  <Configurations>
+    <Configuration Name="SGC_ModbusSlave" Description="" />
+    <Configuration Name="X20CPU_Slave_Master" Description="" />
+    <Configuration Name="PP_ModbusSlave" Description="" />
+    <Configuration Name="PP_ModbusMaster" Description="" />
+    <Configuration Name="Config1" Description="" />
+  </Configurations>
+</Physical>

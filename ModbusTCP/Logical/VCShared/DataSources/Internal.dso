@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="2.4"?>
+<DataSource xmlns="http://br-automation.co.at/AS/VC/Project" Name="Internal">
+  <Property Name="IsIntern" Value="True" />
+  <Property Name="DefaultUpdateTime" Value="200" />
+  <Property Name="Description" Value="" />
+  <Property Name="TextGroup" Value="None" />
+  <DataPoints />
+</DataSource>

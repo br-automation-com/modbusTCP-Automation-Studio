@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.90.21 SP03?>
+<Library Description="This library contains function interfaces for IEC 1131-3 conversion functions." xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File>AsIecCon.fun</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="AsTime" />
+  </Dependencies>
+</Library>

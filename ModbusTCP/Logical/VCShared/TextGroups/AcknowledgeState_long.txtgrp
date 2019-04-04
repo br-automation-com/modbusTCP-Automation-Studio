@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="3.0.90.21 SP03"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="AcknowledgeState_long">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="2"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="87331" Value="Acknowledged"/>
+    <Text ID="87332" Value="Not Acknowledged"/>
+    <Text ID="87333" Value="Acknowledged Reset"/>
+    <Text ID="87334" Value="Reset Acknowledged"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="87331" Value="Quittiert"/>
+    <Text ID="87332" Value="Unquittiert"/>
+    <Text ID="87333" Value="Quittiert Resetiert"/>
+    <Text ID="87334" Value="Resetiert Quittiert"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="87331" Value="0"/>
+    <Index ID="87332" Value="1"/>
+    <Index ID="87333" Value="3"/>
+    <Index ID="87334" Value="2"/>
+  </IndexMap>
+</TextGroup>

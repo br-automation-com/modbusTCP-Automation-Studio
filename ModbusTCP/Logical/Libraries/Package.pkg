@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.90.37 SP19?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Library" Language="Binary" Description="This library contains function interfaces for IEC 1131-3 conversion functions.">AsIecCon</Object>
+    <Object Type="Library" Language="Binary" Description="This library contains runtime functions for IEC tasks.">Runtime</Object>
+    <Object Type="Library" Language="Binary" Description="This library contains function interfaces for IEC1131-3 operator functions. For the most part, these are mathematical and logical functions.">Operator</Object>
+    <Object Type="Library" Language="Binary" Description="This library contains FBKs for exchanging data (data stream) via stream sockets (TCP).">astcp</Object>
+    <Object Type="Library" Language="Binary" Description="The AsBrStr Library contains FBKs for memory and character string handling.">AsBrStr</Object>
+    <Object Type="Library" Language="Binary" Description="The AsARCfg library supports reading and writing Automation Runtime configurations.">AsARCfg</Object>
+    <Object Type="Library" Language="Binary" Description="The SYS_LIB library contains functions for memory management and operating system manipulation as well as hardware-specific functions.">sys_lib</Object>
+    <Object Type="Library" Language="Binary" Description="This library contains standard function blocks and funtions for IEC 1131-3.">standard</Object>
+    <Object Type="Library" Language="Binary" Description="The AsTime Library supports DATE_AND_TIME and TIME data types.">astime</Object>
+    <Object Type="Library" Language="ANSIC">MbusTCP</Object>
+  </Objects>
+</Package>

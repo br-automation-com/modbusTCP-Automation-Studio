@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.90.37 SP19?>
+<Project Description="Modbus TCP Master and Slave" Version="1.00.0" Edition="Standard" EditionComment="Standard" xmlns="http://br-automation.co.at/AS/Project">
+  <Communication />
+  <Project StoreRuntimeInProject="false" />
+  <IEC KeywordsAsStructureMembers="false" NamingConventions="true" Pointers="true" ExtendedConstants="true" IecBitOperations="true" IecExtendedComments="true" Preprocessor="false" />
+  <Motion RestartInitParameter="true" RestartAcoposParameter="true" />
+  <Variables DefaultInitValue="0" DefaultVolatile="false" DefaultRetain="false" />
+  <ANSIC DefaultIncludes="true" />
+</Project>

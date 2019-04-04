@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="2.4"?>
+<TouchPad xmlns="http://br-automation.co.at/AS/VC/Project" Name="AlphaPadQVGA">
+  <Property Name="BackColor" Value="8"/>
+  <Property Name="BitmapGroup" Value="Source[local].BitmapGroup[AlphaPadQVGA]"/>
+  <Property Name="BitmapIndex" Value="None"/>
+  <Property Name="BitmapOffset" Value="0"/>
+  <Property Name="BitmapSource" Value="MultipleBitmaps"/>
+  <Property Name="Description" Value=""/>
+  <Property Name="Height" Value="240"/>
+  <Property Name="Left" Value="0"/>
+  <Property Name="NumLevel" Value="6"/>
+  <Property Name="PressedBitmapGroup" Value="Source[local].BitmapGroup[AlphaPadQVGA]"/>
+  <Property Name="PressedBitmapIndex" Value="None"/>
+  <Property Name="PressedBitmapOffset" Value="6"/>
+  <Property Name="PressedBitmapSource" Value="MultipleBitmaps"/>
+  <Property Name="Top" Value="0"/>
+  <Property Name="Width" Value="320"/>
+  <Controls>
+    <Control ClassId="0x00000500" Name="TouchPadGrid">
+      <Property Name="ColumnWidth" Value="20"/>
+      <Property Name="Columns" Value="14"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="160"/>
+      <Property Name="Left" Value="20"/>
+      <Property Name="RowHeight" Value="40"/>
+      <Property Name="Rows" Value="4"/>
+      <Property Name="Top" Value="58"/>
+      <Property Name="Width" Value="280"/>
+    </Control>
+    <Control ClassId="0x0000100E" Name="TouchPadEdit">
+      <Property Name="BackColor" Value="7"/>
+      <Property Name="Border" Value="Source[local].Border[Sunken]"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Font" Value="Source[local].Font[Arial9px]"/>
+      <Property Name="ForeColor" Value="0"/>
+      <Property Name="Height" Value="30"/>
+      <Property Name="Left" Value="17"/>
+      <Property Name="SimulationValue" Value=""/>
+      <Property Name="Top" Value="19"/>
+      <Property Name="Width" Value="286"/>
+    </Control>
+  </Controls>
+  <PanelItems>
+    <PanelItem Index="1">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="1" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="2" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="3" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="4" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="5" VirtualKey="TP_SET_LAYER0"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="2">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="1" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="2" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="3" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="4" VirtualKey="TP_SET_LAYER0"/>
+        <KeyLevel Level="5" VirtualKey="TP_SET_LAYER0"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="3">
+      <KeyLevels/>
+    </PanelItem>
+    <PanelItem Index="4">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_1"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Exclamation"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sa"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_A"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sq"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Q"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="5">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_1"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Exclamation"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sa"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_A"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sq"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Q"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="6">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_2"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_At_sign"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sb"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_B"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sr"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_R"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="7">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_2"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_At_sign"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sb"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_B"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sr"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_R"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="8">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_3"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Hash"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sc"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_C"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_ss"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_S"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="9">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_3"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Hash"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sc"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_C"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_ss"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_S"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="10">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Minus"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Underscore"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sd"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_D"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_st"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_T"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="11">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Minus"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Underscore"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sd"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_D"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_st"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_T"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="12">
+      <KeyLevels/>
+    </PanelItem>
+    <PanelItem Index="13">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="1" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="2" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="3" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="4" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="5" VirtualKey="TP_CANCEL"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="14">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="1" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="2" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="3" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="4" VirtualKey="TP_CANCEL"/>
+        <KeyLevel Level="5" VirtualKey="TP_CANCEL"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="15">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="1" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="2" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="3" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="4" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="5" VirtualKey="TP_SET_LAYER2"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="16">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="1" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="2" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="3" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="4" VirtualKey="TP_SET_LAYER2"/>
+        <KeyLevel Level="5" VirtualKey="TP_SET_LAYER2"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="17">
+      <KeyLevels/>
+    </PanelItem>
+    <PanelItem Index="18">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_4"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Dollar"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_se"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_E"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_su"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_U"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="19">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_4"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Dollar"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_se"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_E"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_su"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_U"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="20">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_5"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Percent"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sf"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_F"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sv"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_V"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="21">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_5"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Percent"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sf"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_F"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sv"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_V"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="22">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_6"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Care"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sg"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_G"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sw"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_W"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="23">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_6"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Care"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sg"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_G"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sw"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_W"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="24">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Equal"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Plus"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sh"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_H"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sx"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_X"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="25">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Equal"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Plus"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sh"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_H"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sx"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_X"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="26">
+      <KeyLevels/>
+    </PanelItem>
+    <PanelItem Index="27">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="1" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="2" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="3" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="4" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="5" VirtualKey="TP_BACKSPACE"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="28">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="1" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="2" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="3" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="4" VirtualKey="TP_BACKSPACE"/>
+        <KeyLevel Level="5" VirtualKey="TP_BACKSPACE"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="29">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="1" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="2" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="3" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="4" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="5" VirtualKey="TP_SET_LAYER4"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="30">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="1" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="2" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="3" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="4" VirtualKey="TP_SET_LAYER4"/>
+        <KeyLevel Level="5" VirtualKey="TP_SET_LAYER4"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="31">
+      <KeyLevels/>
+    </PanelItem>
+    <PanelItem Index="32">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_7"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Ampersand"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_si"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_I"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sy"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Y"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="33">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_7"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Ampersand"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_si"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_I"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sy"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Y"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="34">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_8"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Asterisk"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sj"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_J"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sz"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Z"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="35">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_8"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Asterisk"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sj"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_J"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_sz"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Z"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="36">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_9"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Openparen"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sk"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_K"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Slash"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Quest"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="37">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_9"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Openparen"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sk"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_K"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Slash"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Quest"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="38">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Openbracket"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Openbrace"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sl"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_L"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_BckSlsh"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_VBar"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="39">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Openbracket"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Openbrace"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sl"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_L"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_BckSlsh"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_VBar"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="40">
+      <KeyLevels/>
+    </PanelItem>
+    <PanelItem Index="41">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="1" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="2" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="3" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="4" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="5" VirtualKey="TP_ENTER"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="42">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="1" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="2" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="3" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="4" VirtualKey="TP_ENTER"/>
+        <KeyLevel Level="5" VirtualKey="TP_ENTER"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="43">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_Shift1"/>
+        <KeyLevel Level="1" VirtualKey="TP_Shift2"/>
+        <KeyLevel Level="2" VirtualKey="TP_Shift1"/>
+        <KeyLevel Level="3" VirtualKey="TP_Shift3"/>
+        <KeyLevel Level="4" VirtualKey="TP_Shift1"/>
+        <KeyLevel Level="5" VirtualKey="TP_Shift4"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="44">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_Shift1"/>
+        <KeyLevel Level="1" VirtualKey="TP_Shift2"/>
+        <KeyLevel Level="2" VirtualKey="TP_Shift1"/>
+        <KeyLevel Level="3" VirtualKey="TP_Shift3"/>
+        <KeyLevel Level="4" VirtualKey="TP_Shift1"/>
+        <KeyLevel Level="5" VirtualKey="TP_Shift4"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="45">
+      <KeyLevels/>
+    </PanelItem>
+    <PanelItem Index="46">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_SIGN_CHANGE"/>
+        <KeyLevel Level="1" VirtualKey="TP_SIGN_CHANGE"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sm"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_M"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Semicolon"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Colon"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="47">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_SIGN_CHANGE"/>
+        <KeyLevel Level="1" VirtualKey="TP_SIGN_CHANGE"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sm"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_M"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Semicolon"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Colon"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="48">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_0"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Closeparen"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sn"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_N"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Apostrophy"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Apostrophy1"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="49">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_0"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Closeparen"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sn"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_N"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Apostrophy"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Apostrophy1"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="50">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_DOT"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_DOT"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_so"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_O"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Comma"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Small"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="51">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_DOT"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_DOT"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_so"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_O"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Comma"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Small"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="52">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Closebracket"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Closebrace"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sp"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_P"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_DOT"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Bigger"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="53">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Closebracket"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Closebrace"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_sp"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_P"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_DOT"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Bigger"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="54">
+      <KeyLevels/>
+    </PanelItem>
+    <PanelItem Index="55">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Space"/>
+      </KeyLevels>
+    </PanelItem>
+    <PanelItem Index="56">
+      <KeyLevels>
+        <KeyLevel Level="0" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="1" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="2" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="3" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="4" VirtualKey="TP_ALPHA_Space"/>
+        <KeyLevel Level="5" VirtualKey="TP_ALPHA_Space"/>
+      </KeyLevels>
+    </PanelItem>
+  </PanelItems>
+</TouchPad>

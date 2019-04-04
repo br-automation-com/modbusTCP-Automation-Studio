@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="3.0.90.21 SP03"?>
+<BitmapGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="Borders">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="8"/>
+  <Property Name="Translate" Value="False"/>
+  <BitmapLayer LanguageId="neutral">
+    <BitmapRef ID="320" Value="Source[local].Bitmap[up_pressed_control]"/>
+    <BitmapRef ID="321" Value="Source[local].Bitmap[up_active_control]"/>
+    <BitmapRef ID="322" Value="Source[local].Bitmap[down_pressed_control]"/>
+    <BitmapRef ID="323" Value="Source[local].Bitmap[down_active_control]"/>
+    <BitmapRef ID="324" Value="Source[local].Bitmap[ProgressBorder]"/>
+    <BitmapRef ID="325" Value="Source[local].Bitmap[multi_down_pressed]"/>
+    <BitmapRef ID="326" Value="Source[local].Bitmap[multi_down_active]"/>
+    <BitmapRef ID="327" Value="Source[local].Bitmap[multi_up_pressed]"/>
+    <BitmapRef ID="328" Value="Source[local].Bitmap[multi_up_active]"/>
+    <BitmapRef ID="329" Value="Source[local].Bitmap[down_pressed]"/>
+    <BitmapRef ID="330" Value="Source[local].Bitmap[down_active]"/>
+    <BitmapRef ID="331" Value="Source[local].Bitmap[up_active]"/>
+    <BitmapRef ID="332" Value="Source[local].Bitmap[up_pressed]"/>
+    <BitmapRef ID="333" Value="Source[local].Bitmap[left_pressed]"/>
+    <BitmapRef ID="334" Value="Source[local].Bitmap[left_active]"/>
+    <BitmapRef ID="335" Value="Source[local].Bitmap[right_pressed]"/>
+    <BitmapRef ID="336" Value="Source[local].Bitmap[right_active]"/>
+    <BitmapRef ID="337" Value="Source[local].Bitmap[control_button_pressed]"/>
+    <BitmapRef ID="338" Value="Source[local].Bitmap[control_button_active]"/>
+    <BitmapRef ID="339" Value="Source[local].Bitmap[forward_pressed]"/>
+    <BitmapRef ID="340" Value="Source[local].Bitmap[forward_active]"/>
+    <BitmapRef ID="341" Value="Source[local].Bitmap[global_area_pressed]"/>
+    <BitmapRef ID="342" Value="Source[local].Bitmap[global_area_active]"/>
+    <BitmapRef ID="343" Value="Source[local].Bitmap[backward_pressed]"/>
+    <BitmapRef ID="344" Value="Source[local].Bitmap[backward_active]"/>
+    <BitmapRef ID="411" Value="Source[local].Bitmap[frame_header]"/>
+  </BitmapLayer>
+  <IndexMap>
+    <Index ID="320" Value="24"/>
+    <Index ID="321" Value="23"/>
+    <Index ID="322" Value="22"/>
+    <Index ID="323" Value="21"/>
+    <Index ID="324" Value="20"/>
+    <Index ID="325" Value="19"/>
+    <Index ID="326" Value="18"/>
+    <Index ID="327" Value="17"/>
+    <Index ID="328" Value="16"/>
+    <Index ID="329" Value="15"/>
+    <Index ID="330" Value="14"/>
+    <Index ID="331" Value="12"/>
+    <Index ID="332" Value="13"/>
+    <Index ID="333" Value="11"/>
+    <Index ID="334" Value="10"/>
+    <Index ID="335" Value="9"/>
+    <Index ID="336" Value="8"/>
+    <Index ID="337" Value="1"/>
+    <Index ID="338" Value="0"/>
+    <Index ID="339" Value="5"/>
+    <Index ID="340" Value="4"/>
+    <Index ID="341" Value="3"/>
+    <Index ID="342" Value="2"/>
+    <Index ID="343" Value="7"/>
+    <Index ID="344" Value="6"/>
+    <Index ID="411" Value="25"/>
+  </IndexMap>
+</BitmapGroup>

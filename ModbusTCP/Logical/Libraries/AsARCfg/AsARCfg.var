@@ -1,0 +1,52 @@
+VAR CONSTANT
+	cfgERR_DEVICE_NOT_EXIST			: UINT		:= 29000;	(*device doesn't exist or device not configured*)
+	cfgERR_DEVICE_INVALID			: UINT		:= 29001;	(*FBK "pDevice" parameter invalid (e.g. pDevice = 0)*)
+	cfgERR_OPTION_INVALID			: UINT		:= 29002;	(*FBK "Option" parameter invalid*)
+	cfgERR_VALUE_INVALID			: UINT		:= 29003;	(*invalid FBK parameter, error text depends on the function block*)
+	cfgERR_SET_NOT_POSSIBLE			: UINT		:= 29004;	(*not possible to set the subnet mask (e.g. DHCP client)*)
+	cfgERR_ARREG					: UINT		:= 29005;	(*error in the AR registry*)
+	cfgERR_INANODE_NOT_SUPPORTED	: UINT		:= 29006;	(*INA device does not support INA node numbers (e.g. IF1 = RS232)*)
+	cfgERR_FTP_SINIT				: UINT		:= 29007;	(*initialization error on FTP server*)
+	cfgERR_FTP_SDOWN				: UINT		:= 29008;	(*shutdown error on FTP server*)
+	cfgERR_PARAM_NOT_SET			: UINT		:= 29009;	(*default gateway not defined*)
+	cfgERR_SNTP_SERVER 				: UINT		:= 29010;	(*could not start the SNTP server*)
+	cfgERR_SNTP_CLIENT 				: UINT		:= 29011;	(*error starting SNTP client (e.g. client already running)*)
+	cfgERR_SNTP_INTERVAL 			: UINT		:= 29012;	(*invalid FBK parameter - values from 1 to 60 are valid*)
+	cfgERR_SYSTEM		 			: UINT		:= 29013;	(*unexpected system error*)
+	cfgERR_TIMEZONE					: UINT		:= 29014;   (*invalid timezone specified*)
+	cfgERR_YEAR_INVALID				: UINT		:= 29015;	(*invalid year specified*)
+	cfgERR_CIFS_DOMAIN_INVALID		: UINT 		:= 29016;   (*cifs domain name not defined *)
+	cfgERR_CIFS_DEFAULTUSER_INVALID	: UINT		:= 29017;	(*cifs defaultuser not defined *)
+	cfgERR_INANODE_NUMBER_SET       : UINT      := 29018;	(*could not set the INA node number*)
+	cfgERR_CIFS_DEFAULTPW_INVALID	: UINT		:= 29019;	(*cifs default password not defined *)
+	cfgERR_DHCP_SERVER_STARTED		: UINT		:= 29020;	(*server is already working*)
+	cfgERR_INTERFACELIST_BUFFER		: UINT		:= 29021;	(*interfacelist buffer to small*)
+	cfgERR_LEASES_BUFFER			: UINT		:= 29022;	(*leases array to small*)
+	cfgERR_LEASE_EXISTS				: UINT		:= 29023;	(*leasename already exists*)
+	cfgERR_LEASE_TIMEOUT			: UINT		:= 29024;	(*invalid lease timeout*)
+	cfgERR_SDM_FUNCTION_NOT_FOUND	: UINT		:= 29026;	(*used arsdm function was not found*)
+
+	cfgETHBAUDRATE_AUTO				: UDINT		:= 0;		(*auto-detect*)
+	cfgETHBAUDRATE_10				: UDINT		:= 10;		(*10 MBaud, half-duplex*)
+	cfgETHBAUDRATE_10FD				: UDINT		:= 11;		(*10 MBaud, full-duplex*)
+	cfgETHBAUDRATE_100				: UDINT		:= 100;		(*100 MBaud, half-duplex*)
+	cfgETHBAUDRATE_100FD			: UDINT		:= 101;		(*100 MBaud, full-duplex*)
+
+	cfgOPTION_NON_VOLATILE			: UDINT		:= 1;		(*permanently sets parameters*)
+	cfgOPTION_VOLATILE				: UDINT		:= 0;		(*temporarily sets parameters*)
+
+	cfgCONFIGMODE_MANUALLY			: UDINT		:= 0;		(*manual configuration*)
+	cfgCONFIGMODE_DHCPCLIENT		: UDINT		:= 1;		(*DHCP client*)
+
+	cfgOPTION_DISABLE				: UDINT		:= 0;		(*disable*)
+	cfgOPTION_ENABLE				: UDINT		:= 1;		(*enable*)
+
+	cfgOPTION_WORKGROUP				: USINT		:= 1;		(*Domain is Workgroup*)
+	cfgOPTION_NON_WORKGROUP			: USINT		:= 0;		(*Domain isn't Workgroup*)
+
+	cfgOPTION_ENABLE_SDM			: USINT		:= 1;		(*enable sdm*)
+	cfgOPTION_DISABLE_SDM			: USINT		:= 2;		(*disable sdm*)
+
+	cfgSTATUS_SDM_ENABLED			: USINT		:= 1;		(*sdm is enabled*)
+	cfgSTATUS_SDM_DISABLED			: USINT		:= 2;		(*sdm is disabled*)
+END_VAR

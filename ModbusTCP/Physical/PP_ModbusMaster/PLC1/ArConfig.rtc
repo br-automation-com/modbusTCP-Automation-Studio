@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=?>
+<RuntimeConfiguration Version="3.9.14">
+  <Module ID="$root" Hardware="4PP420.1043-75">
+    <Group ID="Logger">
+      <Group ID="LoggerSystem">
+        <Parameter ID="SystemLoggerSize" Value="204800" />
+        <Parameter ID="FieldbusLoggerSize" Value="204800" />
+        <Parameter ID="SafetyLoggerSize" Value="204800" />
+      </Group>
+      <Group ID="LoggerUser">
+        <Parameter ID="UserLoggerSize" Value="204800" />
+      </Group>
+    </Group>
+    <Group ID="Ethernet">
+      <Parameter ID="EthernetHostName" Value="br-automation" />
+      <Parameter ID="EthernetDefaultGateway" />
+      <Group ID="Routes" />
+    </Group>
+    <Group ID="DNS">
+      <Selector ID="ActivateDns" Value="0" />
+    </Group>
+    <Group ID="AdditionalHardware" />
+    <Group ID="OPC">
+      <Parameter ID="ActivateOpc" Value="0" />
+      <Parameter ID="OpcTagsPassword" />
+      <Parameter ID="DCOMInterface" />
+    </Group>
+    <Group ID="WebServer">
+      <Selector ID="ActivateWebServer" Value="1">
+        <Parameter ID="TransferWebServ" Value="1" />
+        <Group ID="WebServerConf">
+          <Parameter ID="WebServerPort" Value="80" />
+          <Parameter ID="WebServerWebDir" Value="F:\web\" />
+          <Parameter ID="WebServerStartPage" Value="index.html" />
+          <Group ID="WebServerMimeTypes" />
+        </Group>
+        <Group ID="WebServerAspConf">
+          <Selector ID="WebServerAspActivate" Value="1">
+            <Parameter ID="WebServerAspReadOnly" Value="0" />
+          </Selector>
+        </Group>
+      </Selector>
+    </Group>
+    <Group ID="SystemDiagnostics">
+      <Selector ID="ActivateSdm" Value="1">
+        <Group ID="SdmCustomizing">
+          <Selector ID="SdmColor" Value="default" />
+          <Group ID="SdmCustomData1">
+            <Group ID="SdmFileDevice1">
+              <Parameter ID="SdmDeviceName1" />
+              <Parameter ID="SdmFileName1" />
+            </Group>
+            <Parameter ID="SdmDataModule1" />
+          </Group>
+          <Group ID="SdmCustomData2">
+            <Group ID="SdmFileDevice2">
+              <Parameter ID="SdmDeviceName2" />
+              <Parameter ID="SdmFileName2" />
+            </Group>
+            <Parameter ID="SdmDataModule2" />
+          </Group>
+        </Group>
+      </Selector>
+    </Group>
+    <Group ID="DTM">
+      <Parameter ID="ActivateDtmServer" Value="0" />
+    </Group>
+  </Module>
+  <Module ID="IF1" Hardware="4PP420.1043-75 (Ser)">
+    <Group ID="Device">
+      <Parameter ID="Baudrate" Value="57600" />
+      <Parameter ID="ReceiveIdleTime" Value="5" />
+      <Parameter ID="Parity" Value="E" />
+      <Parameter ID="DataBits" Value="8" />
+      <Parameter ID="StopBits" Value="1" />
+    </Group>
+    <Group ID="INAModem">
+      <Selector ID="ActivateModem" Value="0" />
+    </Group>
+    <Group ID="Network">
+      <Selector ID="NetworkProtocol" Value="Disable">
+        <Group ID="INA">
+          <Parameter ID="ActivateIna" Value="1" />
+        </Group>
+      </Selector>
+    </Group>
+  </Module>
+  <Module ID="IF5" Hardware="4PP420.1043-75 (Eth)">
+    <Selector ID="ActivateDevice" Value="1">
+      <Group ID="Device">
+        <Parameter ID="Baudrate" Value="0" />
+        <Selector ID="Mode" Value="Manual">
+          <Parameter ID="InternetAddress" Value="192.168.0.20" />
+          <Parameter ID="SubnetMask" Value="255.255.255.0" />
+        </Selector>
+      </Group>
+      <Group ID="INA">
+        <Parameter ID="ActivateIna" Value="1" />
+        <Parameter ID="InaPort" Value="11159" />
+      </Group>
+      <Group ID="SNMP">
+        <Parameter ID="ActivateSnmp" Value="2" />
+      </Group>
+      <Group ID="Modbus">
+        <Selector ID="ActivateModbus" Value="0" />
+      </Group>
+    </Selector>
+  </Module>
+</RuntimeConfiguration>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.71.31 SP05?>
+<Library Description="The AsARCfg library supports reading and writing Automation Runtime configurations." xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File>AsARCfg.var</File>
+    <File>AsARCfg.typ</File>
+    <File>AsARCfg.fun</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="runtime" />
+  </Dependencies>
+</Library>

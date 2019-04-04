@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.90.29 SP11?>
+<VcMapping>
+  <Row Address="DS1" ObjectName="Master" KeyPriority="Lower Cyclic #8" Description="PP420" />
+</VcMapping>

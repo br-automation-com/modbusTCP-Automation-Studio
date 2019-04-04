@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="3.0.90.30 SP12"?>
+<Project xmlns="http://br-automation.co.at/AS/VC/Project">
+  <Property Name="Backlight" Value="False" />
+  <Property Name="BacklightIgnoreFirst" Value="False" />
+  <Property Name="BeepKey" Value="False" />
+  <Property Name="BeepTouch" Value="False" />
+  <Property Name="CalibrationDatapoint" Value="None" />
+  <Property Name="CalibrationStateDatapoint" Value="None" />
+  <Property Name="ColorMode" Value="8Bit" />
+  <Property Name="ConnectionErrorPage" Value="None" />
+  <Property Name="DefaultKeyLevelNumeric" Value="None" />
+  <Property Name="DefaultKeyLevelString" Value="None" />
+  <Property Name="DefaultLanguage" Value="en" />
+  <Property Name="DefaultPage" Value="Source[local].Page[Init_Page]" />
+  <Property Name="DefaultStyleSheet" Value="Source[local].StyleSheet[Color]" />
+  <Property Name="FocusControlDatapoint" Value="None" />
+  <Property Name="FontAntialiasing" Value="Off" />
+  <Property Name="HelpControlDatapoint" Value="None" />
+  <Property Name="IPAddressDatapoint" Value="None" />
+  <Property Name="KeyLevelChangeDatapoint" Value="None" />
+  <Property Name="KeyLevelCurrentDatapoint" Value="None" />
+  <Property Name="KeyMatrix" Value="None" />
+  <Property Name="KeyRepeatDelay" Value="300" />
+  <Property Name="KeyRepeatRate" Value="50" />
+  <Property Name="LEDMatrix" Value="None" />
+  <Property Name="LanguageChangeDatapoint" Value="None" />
+  <Property Name="LanguageCurrentDatapoint" Value="None" />
+  <Property Name="LifeSignDatapoint" Value="None" />
+  <Property Name="ManualStart" Value="False" />
+  <Property Name="PageChangeDatapoint" Value="None" />
+  <Property Name="PageCurrentDatapoint" Value="None" />
+  <Property Name="ScreenSaver_Activate" Value="False" />
+  <Property Name="TargetResourceRoot" Value="" />
+  <Property Name="TextLengthOverrunBackColor" Value="None" />
+  <Property Name="TextLengthOverrunCut" Value="False" />
+  <Property Name="TextLengthOverrunForeColor" Value="None" />
+  <Property Name="TouchPadCancel" Value="Default" />
+  <Property Name="VCCVersion" Value="9" />
+  <Property Name="WheelCountDatapoint" Value="None" />
+  <Property Name="WheelEnterDatapoint" Value="None" />
+  <SourceFiles>
+    <Source File="TextGroups\TextGroup_1.txtgrp" />
+    <Source File="Fonts\DefaultFont.fninfo" />
+    <Source File="Fonts\Arial9px.fninfo" />
+    <Source File="Fonts\Arial9pxBold.fninfo" />
+    <Source File="Fonts\Arial10pxBold.fninfo" />
+    <Source File="Fonts\Arial12px.fninfo" />
+    <Source File="Fonts\Arial9pxValue.fninfo" />
+    <Source File="Bitmaps\AlphaPadQVGA1.bminfo" />
+    <Source File="Bitmaps\AlphaPadQVGA2.bminfo" />
+    <Source File="Bitmaps\AlphaPadQVGA3.bminfo" />
+    <Source File="Bitmaps\AlphaPadVGA_pressed.bminfo" />
+    <Source File="Bitmaps\AlphaPadQVGA2_pressed.bminfo" />
+    <Source File="Bitmaps\AlphaPadQVGA3_pressed.bminfo" />
+    <Source File="Bitmaps\AlphaPadQVGA1_pressed.bminfo" />
+    <Source File="Bitmaps\AlphaPadVGA.bminfo" />
+    <Source File="Bitmaps\NumPad_pressed.bminfo" />
+    <Source File="Bitmaps\NumPad.bminfo" />
+    <Source File="Bitmaps\AcknowledgeReset.bminfo" />
+    <Source File="Bitmaps\AlarmActive.bminfo" />
+    <Source File="Bitmaps\AlarmBypassOFF.bminfo" />
+    <Source File="Bitmaps\AlarmBypassON.bminfo" />
+    <Source File="Bitmaps\AlarmInactive.bminfo" />
+    <Source File="Bitmaps\AlarmLatched.bminfo" />
+    <Source File="Bitmaps\AlarmNotQuit.bminfo" />
+    <Source File="Bitmaps\AlarmQuit.bminfo" />
+    <Source File="Bitmaps\Reset.bminfo" />
+    <Source File="Bitmaps\ResetAcknowledge.bminfo" />
+    <Source File="Bitmaps\Triggered.bminfo" />
+    <Source File="Bitmaps\ListPadHor.bminfo" />
+    <Source File="Bitmaps\ListPadHor_pressed.bminfo" />
+    <Source File="Bitmaps\ListPadVer.bminfo" />
+    <Source File="Bitmaps\ListPadVer_pressed.bminfo" />
+    <Source File="Bitmaps\backward_active.bminfo" />
+    <Source File="Bitmaps\backward_pressed.bminfo" />
+    <Source File="Bitmaps\global_area_active.bminfo" />
+    <Source File="Bitmaps\global_area_pressed.bminfo" />
+    <Source File="Bitmaps\forward_active.bminfo" />
+    <Source File="Bitmaps\forward_pressed.bminfo" />
+    <Source File="Bitmaps\control_button_active.bminfo" />
+    <Source File="Bitmaps\control_button_pressed.bminfo" />
+    <Source File="Bitmaps\right_active.bminfo" />
+    <Source File="Bitmaps\right_pressed.bminfo" />
+    <Source File="Bitmaps\left_active.bminfo" />
+    <Source File="Bitmaps\left_pressed.bminfo" />
+    <Source File="Bitmaps\up_active.bminfo" />
+    <Source File="Bitmaps\up_pressed.bminfo" />
+    <Source File="Bitmaps\down_active.bminfo" />
+    <Source File="Bitmaps\down_pressed.bminfo" />
+    <Source File="Bitmaps\multi_up_active.bminfo" />
+    <Source File="Bitmaps\multi_up_pressed.bminfo" />
+    <Source File="Bitmaps\multi_down_active.bminfo" />
+    <Source File="Bitmaps\multi_down_pressed.bminfo" />
+    <Source File="Bitmaps\ProgressBorder.bminfo" />
+    <Source File="Bitmaps\down_active_control.bminfo" />
+    <Source File="Bitmaps\down_pressed_control.bminfo" />
+    <Source File="Bitmaps\up_active_control.bminfo" />
+    <Source File="Bitmaps\global_area_gradient_upside.bminfo" />
+    <Source File="Bitmaps\global_area_gradient_downside.bminfo" />
+    <Source File="Bitmaps\frame_header.bminfo" />
+    <Source File="Bitmaps\up_pressed_control.bminfo" />
+    <Source File="Bitmaps\EditPadVGA.bminfo" />
+    <Source File="Bitmaps\EditPadVGA_pressed.bminfo" />
+    <Source File="BitmapGroups\AlphaPadQVGA.bmgrp" />
+    <Source File="BitmapGroups\NumPad.bmgrp" />
+    <Source File="BitmapGroups\AlphaPad.bmgrp" />
+    <Source File="BitmapGroups\AlarmEvent.bmgrp" />
+    <Source File="BitmapGroups\AlarmState.bmgrp" />
+    <Source File="BitmapGroups\BypassState.bmgrp" />
+    <Source File="BitmapGroups\AcknowledgeState.bmgrp" />
+    <Source File="BitmapGroups\NavigationPad.bmgrp" />
+    <Source File="BitmapGroups\Borders.bmgrp" />
+    <Source File="Pages\Init_Page.page" />
+    <Source File="StyleSheets\Gray.vcs" />
+    <Source File="StyleSheets\Color.vcs" />
+    <Source File="Borders\Raised.bdr" />
+    <Source File="Borders\Sunken.bdr" />
+    <Source File="Borders\Etched.bdr" />
+    <Source File="Borders\Bump.bdr" />
+    <Source File="Borders\SunkenOuter.bdr" />
+    <Source File="Borders\RaisedInner.bdr" />
+    <Source File="Borders\Flat_black.bdr" />
+    <Source File="Borders\Flat_grey.bdr" />
+    <Source File="Borders\BackwardActive.bdr" />
+    <Source File="Borders\BackwardPressed.bdr" />
+    <Source File="Borders\ControlActive.bdr" />
+    <Source File="Borders\ControlPressed.bdr" />
+    <Source File="Borders\DownActiveControl.bdr" />
+    <Source File="Borders\DownPressedControl.bdr" />
+    <Source File="Borders\ForwardActive.bdr" />
+    <Source File="Borders\ForwardPressed.bdr" />
+    <Source File="Borders\GlobalAreaActive.bdr" />
+    <Source File="Borders\GlobalAreaPressed.bdr" />
+    <Source File="Borders\MultiScrollDownActive.bdr" />
+    <Source File="Borders\MultiScrollDownPressed.bdr" />
+    <Source File="Borders\MultiScrollUpActive.bdr" />
+    <Source File="Borders\MultiScrollUpPressed.bdr" />
+    <Source File="Borders\ProgressBarBorder.bdr" />
+    <Source File="Borders\ScrollDownActive.bdr" />
+    <Source File="Borders\ScrollDownPressed.bdr" />
+    <Source File="Borders\ScrollUpActive.bdr" />
+    <Source File="Borders\ScrollUpPressed.bdr" />
+    <Source File="Borders\ScrollLeftActive.bdr" />
+    <Source File="Borders\ScrollLeftPressed.bdr" />
+    <Source File="Borders\ScrollRightActive.bdr" />
+    <Source File="Borders\ScrollRightPressed.bdr" />
+    <Source File="Borders\UpActiveControl.bdr" />
+    <Source File="Borders\UpPressedControl.bdr" />
+    <Source File="Borders\FrameHeader.bdr" />
+    <Source File="TouchPads\NumPad.tpr" />
+    <Source File="TouchPads\AlphaPadQVGA.tpr" />
+    <Source File="TouchPads\AlphaPad.tpr" />
+    <Source File="TouchPads\NavigationPad_ver.tpr" />
+    <Source File="TouchPads\NavigationPad_hor.tpr" />
+    <Source File="TouchPads\EditPad.tpr" />
+    <Source File="Trends\TrendData.tdc" />
+    <Source File="VirtualKeys.vcvk" />
+    <Source File="Palette.vcr" />
+  </SourceFiles>
+</Project>

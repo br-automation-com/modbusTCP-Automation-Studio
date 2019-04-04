@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=?>
+<RuntimeConfiguration Version="4.2.22">
+  <Module ID="$root" Hardware="X20CP3586">
+    <Group ID="Logger">
+      <Group ID="LoggerSystem">
+        <Parameter ID="SystemLoggerSize" Value="204800" />
+        <Parameter ID="FieldbusLoggerSize" Value="204800" />
+        <Parameter ID="SafetyLoggerSize" Value="204800" />
+      </Group>
+      <Group ID="LoggerUser">
+        <Parameter ID="UserLoggerSize" Value="204800" />
+      </Group>
+    </Group>
+    <Group ID="Ethernet">
+      <Parameter ID="EthernetHostName" Value="br-automation" />
+      <Parameter ID="EthernetDefaultGateway" />
+      <Group ID="Routes" />
+    </Group>
+    <Group ID="DNS">
+      <Selector ID="ActivateDns" Value="0" />
+    </Group>
+    <Group ID="AdditionalHardware" />
+    <Group ID="OPC">
+      <Parameter ID="ActivateOpc" Value="0" />
+      <Parameter ID="OpcTagsPassword" />
+      <Parameter ID="DCOMInterface" />
+    </Group>
+    <Group ID="WebServer">
+      <Selector ID="ActivateWebServer" Value="1">
+        <Parameter ID="TransferWebServ" Value="1" />
+        <Group ID="WebServerConf">
+          <Parameter ID="WebServerPort" Value="80" />
+          <Parameter ID="WebServerWebDir" Value="F:\web\" />
+          <Parameter ID="WebServerStartPage" Value="index.html" />
+          <Group ID="WebServerMimeTypes" />
+        </Group>
+        <Group ID="WebServerAspConf">
+          <Selector ID="WebServerAspActivate" Value="1">
+            <Parameter ID="WebServerAspReadOnly" Value="0" />
+          </Selector>
+        </Group>
+      </Selector>
+    </Group>
+    <Group ID="SystemDiagnostics">
+      <Selector ID="ActivateSdm" Value="1">
+        <Group ID="SdmCustomizing">
+          <Selector ID="SdmColor" Value="default" />
+          <Group ID="SdmCustomData1">
+            <Group ID="SdmFileDevice1">
+              <Parameter ID="SdmDeviceName1" />
+              <Parameter ID="SdmFileName1" />
+            </Group>
+            <Parameter ID="SdmDataModule1" />
+          </Group>
+          <Group ID="SdmCustomData2">
+            <Group ID="SdmFileDevice2">
+              <Parameter ID="SdmDeviceName2" />
+              <Parameter ID="SdmFileName2" />
+            </Group>
+            <Parameter ID="SdmDataModule2" />
+          </Group>
+        </Group>
+      </Selector>
+    </Group>
+    <Group ID="DTM">
+      <Parameter ID="ActivateDtmServer" Value="0" />
+    </Group>
+  </Module>
+  <Module ID="IF1" Hardware="X20CP3586 (Ser)">
+    <Group ID="Device">
+      <Parameter ID="Baudrate" Value="57600" />
+      <Parameter ID="ReceiveIdleTime" Value="5" />
+      <Parameter ID="Parity" Value="E" />
+      <Parameter ID="DataBits" Value="8" />
+      <Parameter ID="StopBits" Value="1" />
+    </Group>
+    <Group ID="INAModem">
+      <Selector ID="ActivateModem" Value="0" />
+    </Group>
+    <Group ID="Network">
+      <Selector ID="NetworkProtocol" Value="Disable">
+        <Group ID="INA">
+          <Parameter ID="ActivateIna" Value="1" />
+        </Group>
+      </Selector>
+    </Group>
+  </Module>
+  <Module ID="IF2" Hardware="X20CP3586 (Eth)">
+    <Selector ID="ActivateDevice" Value="1">
+      <Group ID="Device">
+        <Parameter ID="Baudrate" Value="0" />
+        <Selector ID="Mode" Value="Manual">
+          <Parameter ID="InternetAddress" Value="10.49.40.144" />
+          <Parameter ID="SubnetMask" Value="255.255.255.0" />
+        </Selector>
+      </Group>
+      <Group ID="INA">
+        <Parameter ID="ActivateIna" Value="1" />
+        <Parameter ID="InaPort" Value="11159" />
+      </Group>
+      <Group ID="SNMP">
+        <Parameter ID="ActivateSnmp" Value="2" />
+      </Group>
+      <Group ID="Modbus">
+        <Selector ID="ActivateModbus" Value="0" />
+      </Group>
+    </Selector>
+  </Module>
+  <Module ID="IF3" Hardware="X20CP3586 (Pwl)">
+    <Selector ID="Operation" Value="EPL-V2">
+      <Parameter ID="MtuSize" Value="300" />
+      <Group ID="PL2">
+        <Parameter ID="ActivatePowerlink" Value="1" />
+        <Parameter ID="CycleTime" Value="2000" />
+        <Parameter ID="MuxPrescaler" Value="8" />
+        <Selector ID="Mode" Value="MN">
+          <Group ID="Advanced">
+            <Selector ID="NodeDefinition" Value="Software" />
+            <Parameter ID="AsyncTimeout" Value="25" />
+            <Parameter ID="AsyncSlotsPerCycle" Value="1" />
+            <Parameter ID="TransferOnlyActive" Value="off" />
+            <Parameter ID="OutputJustInTime" Value="off" />
+            <Parameter ID="BasicEthernetInServiceMode" Value="off" />
+            <Parameter ID="EplNatSubnet" Value="192.168.101.0" />
+          </Group>
+          <Group ID="IOBus">
+            <Parameter ID="BusCycleTrigger" Value="auto" />
+            <Parameter ID="OutputCycleTrigger" Value="auto" />
+          </Group>
+          <Group ID="Channels" />
+        </Selector>
+      </Group>
+      <Group ID="Ethernet">
+        <Selector ID="EthernetMode" Value="Manual">
+          <Parameter ID="InternetAddress" />
+          <Parameter ID="SubnetMask" Value="255.0.0.0" />
+        </Selector>
+      </Group>
+      <Group ID="INA">
+        <Parameter ID="ActivateIna" Value="0" />
+        <Parameter ID="InaPort" Value="11159" />
+        <Parameter ID="InaNodeNumber" Value="1" />
+      </Group>
+    </Selector>
+  </Module>
+  <Module ID="IF6" Hardware="X20CP3586 (X2x)">
+    <Group ID="X2X">
+      <Parameter ID="ActivateX2X" Value="1" />
+      <Parameter ID="CycleTime" Value="2000" />
+      <Parameter ID="BusLength" Value="1000" />
+      <Group ID="Advanced">
+        <Parameter ID="Stations" Value="64" />
+        <Parameter ID="AsyncPayload" Value="80" />
+        <Parameter ID="Asymmetric" Value="off" />
+        <Parameter ID="OutputJustInTime" Value="on" />
+      </Group>
+      <Group ID="IOBus">
+        <Parameter ID="BusCycleTrigger" Value="auto" />
+        <Parameter ID="OutputCycleTrigger" Value="auto" />
+      </Group>
+    </Group>
+  </Module>
+</RuntimeConfiguration>

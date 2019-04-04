@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="3.0.90.21 SP03"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="AlarmEvent_long">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="7"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="87345" Value="Triggered"/>
+    <Text ID="87346" Value="Reset"/>
+    <Text ID="87347" Value="Bypassed"/>
+    <Text ID="87348" Value="Not Bypassed"/>
+    <Text ID="87349" Value="Reset Acknowledged"/>
+    <Text ID="87350" Value="Achnowledged Reset"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="87345" Value="Gekommen"/>
+    <Text ID="87346" Value="Gegangen"/>
+    <Text ID="87347" Value="Gebrückt"/>
+    <Text ID="87348" Value="Entbrückt"/>
+    <Text ID="87349" Value="Resetiert Quittiert"/>
+    <Text ID="87350" Value="Quittiert Resetiert"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="87345" Value="0"/>
+    <Index ID="87346" Value="1"/>
+    <Index ID="87347" Value="2"/>
+    <Index ID="87348" Value="3"/>
+    <Index ID="87349" Value="4"/>
+    <Index ID="87350" Value="5"/>
+  </IndexMap>
+</TextGroup>
