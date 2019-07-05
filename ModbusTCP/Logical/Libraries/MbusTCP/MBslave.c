@@ -58,6 +58,8 @@ void MBslave(MBslave_typ* inst)
 		/* Wait for function block enable */
 		case DISABLE:
 			inst->status = ERR_FUB_ENABLE_FALSE;
+			inst->internal.substep = 0;
+			inst->last_error = 0;
 			if(inst->enable)
 			{
 				inst->internal.step = GET_IP;
