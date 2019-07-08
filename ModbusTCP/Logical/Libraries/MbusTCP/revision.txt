@@ -1,4 +1,8 @@
 --------------------------------------------------------------------------------------------------------
+Version 1.42
+FIX: Reset last error and internal substep while function block is disabled
+
+--------------------------------------------------------------------------------------------------------
 Version 1.41
 FIX: Limit quantity to 125 for registers and 2000 for discrete values to match modbus specification
 CHANGE: Added support from ARM CPUs
