@@ -4,6 +4,8 @@ modbusTCP library for Automation Studio with legacy runtimes that don't support 
 See description for more details. Also see release package for additional tools.
 
 ## Revision History
+Version 1.43
+FIX: Quantity error was not reported correct
 
 Version 1.42
 FIX: Reset last error and internal substep while function block is disabled
