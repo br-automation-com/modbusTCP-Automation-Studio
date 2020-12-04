@@ -30,9 +30,9 @@
 	#define IsARM					0
 #endif
 
-#define	RECEIVE_TIMEOUT				5000	/* The slave has to responde within this time (ms) */
+#define	RECEIVE_TIMEOUT				5000	/* The slave has to respond within this time (ms) */
 #define	DEBUG_LEVEL					2		/* 1=Report only errors, 2=Report errors, requests, response */
-#define LOG_LINE_LEN				50		/* Length of loogbook line */
+#define LOG_LINE_LEN				50		/* Length of logbook line */
 
 /* ------------------------------------------------------------------------------------------------- */
 /* STEP SEQUENCE */

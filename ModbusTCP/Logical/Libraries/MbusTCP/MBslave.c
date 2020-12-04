@@ -449,12 +449,12 @@ UINT analyze_req_from_master(MBslave_typ* inst, USINT master, modbus_log_typ LOG
 		else if ((request.function_code	== READ_COILS || request.function_code	== READ_DISCRETE_INPUTS || request.function_code == WRITE_MULTIPLE_COILS) && request.quantity > MODBUS_MAX_REG*2*8)
 		{
 			NewLogEntry("ERR: Max length exceeded", LOGBOOK);
-			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_MESSAGE_FORMAT);
+			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_QUANTITY);
 		}
 		else if ((request.function_code	== READ_HOLDING_REGISTERS || request.function_code	== READ_INPUT_REGISTERS || request.function_code == WRITE_MULTIPLE_REGISTERS) && request.quantity > MODBUS_MAX_REG)
 		{
 			NewLogEntry("ERR: Max length exceeded", LOGBOOK);
-			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_MESSAGE_FORMAT);
+			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_QUANTITY);
 		}
 		else
 		{

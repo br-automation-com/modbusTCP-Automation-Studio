@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=3.0.90.37 SP19?>
-<Library Version="1.42.0" xmlns="http://br-automation.co.at/AS/Library">
+<?AutomationStudio Version=3.0.90.41 SP23?>
+<Library Version="1.43.0" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File>MbusTCP.fun</File>
     <File>MbusTCP.typ</File>

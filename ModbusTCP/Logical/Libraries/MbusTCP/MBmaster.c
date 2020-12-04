@@ -484,12 +484,16 @@ UINT analyze_answer_from_slave(modbus_master_cfg_typ* config,USINT req_nr, USINT
 	UINT	uint_var, receive_tr_id, protocol_id, length;
 	UINT	unit, function_code, quantity, i;
 	
+	/* Transaction id: 2 byte */
 	brsmemcpy((UDINT)&uint_var, (UDINT)&receive_buff[0], sizeof(uint_var));
 	receive_tr_id	= MySwapUINT(uint_var);
+	/* Protocol id: 2 byte */
 	brsmemcpy((UDINT)&uint_var, (UDINT)&receive_buff[2], sizeof(uint_var));
 	protocol_id		= MySwapUINT(uint_var);
+	/* Length: 2 byte */
 	brsmemcpy((UDINT)&uint_var, (UDINT)&receive_buff[4], sizeof(uint_var));
 	length 			= MySwapUINT(uint_var);
+	/* Unit: 1 byte */
 	unit 			= receive_buff[6];
 	function_code	= receive_buff[7];
 
