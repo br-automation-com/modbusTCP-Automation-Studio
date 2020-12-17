@@ -1,7 +1,7 @@
 ## Description
 modbusTCP library for Automation Studio with legacy runtimes that don't support native modbusTCP.
 
-See [**-->description<--**](https://github.com/br-automation-com/modbusTCP-Automation-Studio/blob/master/Description%20modbusTCP%20library%20AS3.x.pdf) for more details. Also see release package for additional tools.
+See [**description**](https://github.com/br-automation-com/modbusTCP-Automation-Studio/blob/master/Description%20modbusTCP%20library%20AS3.x.pdf) for more details. Also see release package for additional tools.
 
 ## Revision History
 Version 1.43
