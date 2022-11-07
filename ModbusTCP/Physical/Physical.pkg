@@ -3,5 +3,6 @@
 <Physical xmlns="http://br-automation.co.at/AS/Physical">
   <Objects>
     <Object Type="Configuration">modbus_master</Object>
+    <Object Type="Configuration">modbus_slave</Object>
   </Objects>
 </Physical>
