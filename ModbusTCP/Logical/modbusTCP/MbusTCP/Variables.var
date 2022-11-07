@@ -20,7 +20,6 @@ VAR CONSTANT
 	ERROR_MESSAGE_FORMAT : UINT := 50002; (* COM: Message format is incorrect *)
 	ERROR_REC_BUF_EXCEEDED : UINT := 50003; (* COM: Receive buffer exceeded maximum configured size *)
 	ERROR_ADR_EMPTY : UINT := 50004; (* COM: Variable address is empty *)
-	ERROR_CYCLIC_ZERO : UINT := 50005; (* COM: Value cyclic TIME is 0 *)
 	ERROR_QUANTITY : UINT := 50006; (* COM: Quantity is higher than the Modbus limit (125 for analog/2000 for digital) *)
 	ERROR_TOO_MANY_MASTERS : UINT := 50100; (* SLV: More than MAX_MASTER are trying TO connect *)
 	ERROR_ADR_EXCEEDED : UINT := 50101; (* SLV: Address exceeded maximum configured size *)

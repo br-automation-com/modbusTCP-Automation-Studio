@@ -26,7 +26,6 @@ FUNCTION_BLOCK MBmaster (*ModbusTCP master implementation*)
 		slave_ip_addr : STRING[18]; (*IP address of the slave*)
 		p_cfg : REFERENCE TO modbus_master_cfg_typ; (*Pointer to configuration data*)
 		p_log : UDINT; (*Pointer to logger array*)
-		cycle_time : UDINT; (*Task class cycle time in ms*)
 	END_VAR
 	VAR_OUTPUT
 		last_error : UINT; (*Error number of data response from the slave*)

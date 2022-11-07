@@ -32,22 +32,21 @@ void MBmaster(struct MBmaster* inst)
 {
 	USINT	x;
 	USINT	receive_status;
+	TIME 	time_new;
 
 	// Increase cycle timers when connected 
 	if(inst->internal.step > WAIT_CONNECTION)
 	{
+		time_new = clock_ms();
+		inst->internal.cycle_time = time_new - inst->internal.time_old;
+
 		// Make sure cycle time has a value 
-		if((inst->cycle_time == 0) && (inst->internal.step != ERROR))
-		{
-			NewLogEntry("ERR: Cyclic time is 0", inst->p_log);
-			inst->status 		= ERROR_CYCLIC_ZERO;
-			inst->internal.step = ERROR;
-		}
-		else
+		if(inst->internal.cycle_time != 0 && inst->internal.time_old != 0)
 		{
 			for(x=0;x<sizeof((*(inst->p_cfg)).action_param)/sizeof((*(inst->p_cfg)).action_param[0]);x++)
-				inst->internal.send_timer[x] += inst->cycle_time;
+				inst->internal.send_timer[x] += inst->internal.cycle_time;
 		}
+		inst->internal.time_old = time_new;
 	}
 	switch(inst->internal.step)
 	{
@@ -279,7 +278,7 @@ void MBmaster(struct MBmaster* inst)
 					    (inst->internal.tcp_receive.status != tcpERR_NO_DATA)) inst->internal.step = CLOSE_PORT;
 				// ---------------------------------------------------------------------------------- 
 				// See if request timed out 
-				inst->internal.receive_timer += inst->cycle_time;
+				inst->internal.receive_timer += inst->internal.cycle_time;
 				if (inst->internal.receive_timer >= RECEIVE_TIMEOUT)
 				{
 					NewLogEntry("ERR: Request timed out", inst->p_log);
@@ -322,7 +321,7 @@ void MBmaster(struct MBmaster* inst)
 			inst->internal.tcp_client.enable = 0;
 			TcpClient(&inst->internal.tcp_client);
 				
-			inst->internal.send_timer[0] += inst->cycle_time;
+			inst->internal.send_timer[0] += inst->internal.cycle_time;
 			if (inst->internal.send_timer[0] > 1000) inst->internal.step = OPEN_PORT;
 		break;			
 		// ------------------------------------------------------------------------------------------ 

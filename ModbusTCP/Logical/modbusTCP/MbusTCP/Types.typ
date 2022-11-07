@@ -73,6 +73,8 @@ TYPE
 	END_STRUCT;
 	modbus_master_internal_typ : 	STRUCT  (*Internal master variables*)
 		step : UINT; (*Internal state in a state machine*)
+		cycle_time : UINT;
+		time_old : TIME;
 		tcp_open : TcpOpen; (*TcpOpen FUB from AsTCP*)
 		tcp_ioctl : TcpIoctl; (*TcpIoctl FUB from AsTCP*)
 		tcp_client : TcpClient; (*TcpClient FUB from AsTCP*)

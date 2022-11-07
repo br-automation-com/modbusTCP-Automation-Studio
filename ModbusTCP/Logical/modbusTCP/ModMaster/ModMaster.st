@@ -52,7 +52,6 @@ PROGRAM _INIT
 	ModbusTcpMaster.slave_ip_addr 	:= ip; 						// Transfer slave device IP address 
 	ModbusTcpMaster.p_cfg 			:= ADR(MasterConfig); 		// Pointer to configuration 
 	ModbusTcpMaster.p_log 			:= ADR(logger);				// Pointer to logger string array. The logger information will show communication details. Enable for debugging, disable for production to save system resources.
-	ModbusTcpMaster.cycle_time 		:= 10; 						// Master cycle time in ms 
 	
 	StartStop := 1;
 END_PROGRAM
