@@ -1,5 +1,5 @@
 PROGRAM _INIT
-	brsstrcpy(ADR(interface), ADR('IF5'));					 // Ethernet interface used on this PLC 
+	brsstrcpy(ADR(interface), ADR('IF2'));					 // Ethernet interface used on this PLC 
 
 	// --------------------------------------------------------------------
 	//  Reset function blocks and data structure on startup (SGC)

@@ -1,4 +1,13 @@
 (*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*General configuration*)
+VAR CONSTANT
+	LOG_LINE_NUM : USINT := 50; (*Number of log entries*)
+	LOG_LINE_LEN : USINT := 100; (*Size of one log entry*)
+	SLAVE_MAX_CONNECTION_NUM : USINT := 3; (*Maximum number of slave connections to master*)
+	SLAVE_MAX_REGISTER_NUM : UINT := 256; (*Maximum number of slave registers*)
+	MASTER_MAX_ACTION_NUM : UINT := 20; (*Maximum number of master actions*)
+END_VAR
+(*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Modbus functions*)
 VAR CONSTANT
 	READ_COILS : USINT := 16#01;
@@ -49,12 +58,13 @@ END_VAR
 (*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Other constants*)
 VAR CONSTANT
+	SLAVE_MAX_CONNECTION_INDEX : USINT := SLAVE_MAX_CONNECTION_NUM-1;
+	SLAVE_MAX_REGISTER_INDEX : UINT := SLAVE_MAX_REGISTER_NUM-1;
+	MASTER_MAX_ACTION_INDEX : USINT := MASTER_MAX_ACTION_NUM-1;
 	MODBUS_TCP_PORT : UINT := 500;
 	MODBUS_MAX_REG : UINT := 125; (* Maximum number of modbus registers for one request *)
 	DISABLE : UINT := 65534;
 	BUSY : UINT := 65535;
 	RECEIVE_TIMEOUT : UINT := 5000;
 	DEBUG_LEVEL : USINT := 2;
-	LOG_LINE_NUM : USINT := 50; (*Number of log entries*)
-	LOG_LINE_LEN : USINT := 100; (*Size of one log entry*)
 END_VAR

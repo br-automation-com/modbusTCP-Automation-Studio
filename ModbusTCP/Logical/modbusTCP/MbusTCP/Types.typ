@@ -68,8 +68,8 @@ TYPE
 		timer : UDINT;
 	END_STRUCT;
 	modbus_master_cfg_typ : 	STRUCT 
-		action_enable : ARRAY[0..19]OF modbus_master_action_enable_typ;
-		action_param : ARRAY[0..19]OF modbus_master_action_param_typ;
+		action_enable : ARRAY[0..MASTER_MAX_ACTION_INDEX]OF modbus_master_action_enable_typ;
+		action_param : ARRAY[0..MASTER_MAX_ACTION_INDEX]OF modbus_master_action_param_typ;
 	END_STRUCT;
 	modbus_master_internal_typ : 	STRUCT  (*Internal master variables*)
 		step : UINT; (*Internal state in a state machine*)
@@ -85,17 +85,17 @@ TYPE
 		linger_opt : tcpLINGER_typ; (*TcpIoctl linger options*)
 		last_req : USINT; (*Last request*)
 		receive_timer : UDINT; (*Receive timer*)
-		send_timer : ARRAY[0..19]OF UDINT; (*Send timer*)
+		send_timer : ARRAY[0..MASTER_MAX_ACTION_INDEX]OF UDINT; (*Send timer*)
 		send_buff : ARRAY[0..500]OF USINT; (*Send buffer*)
 		receive_buff : ARRAY[0..500]OF USINT; (*Receive buffer*)
 		transaction_id : UINT; (*Transaction ID*)
 		wrong_message : UDINT; (*Wrong message counter*)
 	END_STRUCT;
 	modbus_slave_cfg_typ : 	STRUCT 
-		p_discrete_inputs : ARRAY[0..255]OF UDINT;
-		p_coils : ARRAY[0..255]OF UDINT;
-		p_input_registers : ARRAY[0..255]OF UDINT;
-		p_holding_registers : ARRAY[0..255]OF UDINT;
+		p_discrete_inputs : ARRAY[0..SLAVE_MAX_REGISTER_INDEX]OF UDINT;
+		p_coils : ARRAY[0..SLAVE_MAX_REGISTER_INDEX]OF UDINT;
+		p_input_registers : ARRAY[0..SLAVE_MAX_REGISTER_INDEX]OF UDINT;
+		p_holding_registers : ARRAY[0..SLAVE_MAX_REGISTER_INDEX]OF UDINT;
 	END_STRUCT;
 	modbus_slave_internal_typ : 	STRUCT  (*Internal slave variables*)
 		step : UINT; (*Internal state in a state machine*)
@@ -103,18 +103,18 @@ TYPE
 		i : USINT; (*Loop counter*)
 		master_nr : USINT; (*Client ID*)
 		master_last : USINT;
-		master_info : ARRAY[0..2]OF master_info_typ; (*Client info*)
+		master_info : ARRAY[0..SLAVE_MAX_CONNECTION_INDEX]OF master_info_typ; (*Client info*)
 		master_addr : ARRAY[0..17]OF USINT; (*Client IP address*)
 		tcp_open : TcpOpen; (*TcpOpen FUB from AsTCP*)
 		tcp_ioctl : TcpIoctl; (*TcpIoctl FUB from AsTCP*)
 		tcp_server : TcpServer; (*TcpServer FUB from AsTCP*)
 		tcp_send : TcpSend; (*TcpSend FUB from AsTCP*)
-		tcp_receive : ARRAY[0..2]OF TcpRecv; (*TcpRecv FUB from AsTCP*)
+		tcp_receive : ARRAY[0..SLAVE_MAX_CONNECTION_INDEX]OF TcpRecv; (*TcpRecv FUB from AsTCP*)
 		tcp_close : TcpClose; (*TcpClose FUB from AsTCP*)
 		tcp_ip : CfgGetIPAddr;
 		linger_opt : tcpLINGER_typ; (*TcpIoctl linger options*)
 		send_buff : ARRAY[0..500]OF USINT; (*Send buffer*)
 		send_byte : UINT;
-		receive_buff : ARRAY[0..2]OF receive_buff_typ; (*Receive buffers for clients*)
+		receive_buff : ARRAY[0..SLAVE_MAX_CONNECTION_INDEX]OF receive_buff_typ; (*Receive buffers for clients*)
 	END_STRUCT;
 END_TYPE
