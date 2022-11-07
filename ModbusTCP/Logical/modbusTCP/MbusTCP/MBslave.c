@@ -105,6 +105,12 @@ void MBslave(struct MBslave* inst)
 					if(brsstrcmp((UDINT)inst->my_ip, (UDINT)"0.0.0.0") == 0) break;
 					inst->internal.step = OPEN_PORT;
 				}
+				else if(inst->internal.tcp_ip.status == cfgERR_DEVICE_NOT_EXIST)
+				{
+					NewLogEntry("ERR: Invalid ethernet device", inst->p_log);
+					inst->status 		= ERROR_DEVICE_ERR;
+					inst->internal.step = ERROR;
+				}
 				else if(inst->internal.tcp_ip.status != BUSY) inst->internal.step = ERROR;
 			}
 			else inst->internal.step = CLOSE_PORT;
