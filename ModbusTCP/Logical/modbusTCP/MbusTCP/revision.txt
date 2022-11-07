@@ -1,0 +1,84 @@
+--------------------------------------------------------------------------------------------------------
+Version 2.0
+CHANGE: Ported library to AS4
+
+--------------------------------------------------------------------------------------------------------
+Version 1.43
+FIX: Quantity error was not reported correct
+
+--------------------------------------------------------------------------------------------------------
+Version 1.42
+FIX: Reset last error and internal substep while function block is disabled
+
+--------------------------------------------------------------------------------------------------------
+Version 1.41
+FIX: Limit quantity to 125 for registers and 2000 for discrete values to match modbus specification
+CHANGE: Added support from ARM CPUs
+
+--------------------------------------------------------------------------------------------------------
+Version 1.40
+
+--------------------------------------------------------------------------------------------------------
+Version 1.39
+CHANGE: Change string libraries to AsBrStr. 
+
+--------------------------------------------------------------------------------------------------------
+Version 1.38
+FIX: Master creates memory violation when all actions are used
+CHANGE: Master and Slave sample code changes. Reset function blocks and config. (SGC AS4+ compatibility)
+
+--------------------------------------------------------------------------------------------------------
+Version 1.37
+FIX: Master tries to reopen the connection when parameter enable is set 0
+CHANGE: Master send request speed improvements.
+CHANGE: Master and Slave sample code changes. Reset last error message.
+
+--------------------------------------------------------------------------------------------------------
+Version 1.36
+FIX: Typo in slave error message
+CHANGE: Master responds with detailed error when device string is wrong
+CHANGE: Master responds with detailed error when connection is broken
+
+--------------------------------------------------------------------------------------------------------
+Version 1.35
+FIX: Slave is not showing correct status when no master is connected
+FIX: Slave is not recovering from critical error when enable is toggled
+FIX: Slave buffer was limited to 256 bytes
+FIX: Master typo in error message
+FIX: Master reports error when response message is too long
+CHANGE: Master increased send and receive buffer from 200 to 500 bytes
+
+--------------------------------------------------------------------------------------------------------
+Version 1.34
+CHANGE:	Added parameter 'unit' to master sample code
+CHANGE:	Slave address range changed to 100 entries
+FIX:	Slave responds with error 32604 on SGC targets
+
+--------------------------------------------------------------------------------------------------------
+Version 1.33
+CHANGE:	Optimized performance for slave
+CHANGE: Value 0 in cyclic time generates error
+
+--------------------------------------------------------------------------------------------------------
+Version 1.32
+CHANGE:	Upgrade to 3.0.90, replaced library convert with asieccon
+
+--------------------------------------------------------------------------------------------------------
+Version 1.31
+
+FIX:	Slave does not close connection correct (02/15/2011 Stephan)
+FIX:	Number of data_lines was not calculated correct (12/15/2010 Stephan)
+
+--------------------------------------------------------------------------------------------------------
+Version 1.30
+
+FIX:	Client ignores parameter "clientconfig.action_enable[].single" (01/13/2010 Jonathan)
+CHANGE:	Changed all terms "client" into "master" and "server" into "slave" (02/10/2010 Stephan)
+CHANGE:	Empty variable addresses now report error (02/10/2010 Stephan)
+CHANGE:	Slave now shows busy when idling  (02/10/2010 Stephan)
+NEW:	Slave creates error when master times out  (02/10/2010 Stephan)
+
+--------------------------------------------------------------------------------------------------------
+Version 1.20
+
+First public release

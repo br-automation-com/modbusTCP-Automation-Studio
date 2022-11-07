@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="2.00.0" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">Types.typ</File>
+    <File>Variables.var</File>
+    <File Description="Exported functions and function blocks">MbusTCP.fun</File>
+    <File Description="Master">MBmaster.c</File>
+    <File Description="Slave">MBslave.c</File>
+    <File Description="Common functions">MBcommon.c</File>
+    <File>revision.txt</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="astcp" />
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="astime" />
+    <Dependency ObjectName="AsBrStr" />
+    <Dependency ObjectName="AsARCfg" />
+    <Dependency ObjectName="sys_lib" />
+    <Dependency ObjectName="AsIecCon" />
+  </Dependencies>
+</Library>

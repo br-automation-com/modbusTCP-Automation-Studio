@@ -1,0 +1,21 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Modbus slave function block and configuration*)
+VAR
+	ModbusTcpSlave : MBslave;
+	SlaveConfig : modbus_slave_cfg_typ;
+	reset_error : BOOL := FALSE;
+END_VAR
+(*IO sample arrays*)
+VAR
+	DO_Bool : ARRAY[0..255] OF BOOL := [256(FALSE)];
+	DI_Bool : ARRAY[0..255] OF BOOL := [256(FALSE)];
+	AO_Word : ARRAY[0..255] OF UINT := [256(0)];
+	AI_Word : ARRAY[0..255] OF UINT := [256(0)];
+END_VAR
+(*MISC variables*)
+VAR
+	interface : STRING[20];
+	idx : UINT := 0;
+	logger : ARRAY[0..19] OF STRING[50];
+	StartStop : BOOL := FALSE;
+END_VAR

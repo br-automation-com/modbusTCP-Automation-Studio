@@ -1,0 +1,21 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Modbus master function block and configuration*)
+VAR
+	ModbusTcpMaster : MBmaster;
+	MasterConfig : modbus_master_cfg_typ;
+	reset_error : BOOL := FALSE;
+END_VAR
+(*IO sample arrays*)
+VAR
+	A_Out : ARRAY[0..255] OF UINT := [256(0)];
+	A_In : ARRAY[0..255] OF UINT := [256(0)];
+	D_Out : ARRAY[0..255] OF BOOL := [256(FALSE)];
+	D_In : ARRAY[0..255] OF BOOL := [256(FALSE)];
+END_VAR
+(*MISC variables*)
+VAR
+	interface : STRING[20];
+	ip : STRING[20];
+	logger : ARRAY[0..19] OF STRING[50];
+	StartStop : BOOL := FALSE;
+END_VAR

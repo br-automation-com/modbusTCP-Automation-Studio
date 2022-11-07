@@ -1,0 +1,60 @@
+(*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Modbus functions*)
+VAR CONSTANT
+	READ_COILS : USINT := 16#01;
+	READ_DISCRETE_INPUTS : USINT := 16#02;
+	READ_HOLDING_REGISTERS : USINT := 16#03;
+	READ_INPUT_REGISTERS : USINT := 16#04;
+	WRITE_SINGLE_COIL : USINT := 16#05;
+	WRITE_SINGLE_REGISTER : USINT := 16#06;
+	WRITE_MULTIPLE_COILS : USINT := 16#0F;
+	WRITE_MULTIPLE_REGISTERS : USINT := 16#10;
+	ON : UINT := 16#FF00;
+	OFF : UINT := 16#0000;
+END_VAR
+(*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Error numbers*)
+VAR CONSTANT
+	ERROR_CRITICAL : UINT := 50000; (* COM: Critical error, disable and re-enable FUB *)
+	ERROR_MESSAGE_SIZE : UINT := 50001; (* COM: Frame message is TO short *)
+	ERROR_MESSAGE_FORMAT : UINT := 50002; (* COM: Message format is incorrect *)
+	ERROR_REC_BUF_EXCEEDED : UINT := 50003; (* COM: Receive buffer exceeded maximum configured size *)
+	ERROR_ADR_EMPTY : UINT := 50004; (* COM: Variable address is empty *)
+	ERROR_CYCLIC_ZERO : UINT := 50005; (* COM: Value cyclic TIME is 0 *)
+	ERROR_QUANTITY : UINT := 50006; (* COM: Quantity is higher than the Modbus limit (125 for analog/2000 for digital) *)
+	ERROR_TOO_MANY_MASTERS : UINT := 50100; (* SLV: More than MAX_MASTER are trying TO connect *)
+	ERROR_ADR_EXCEEDED : UINT := 50101; (* SLV: Address exceeded maximum configured size *)
+	ERROR_LENGTH_EXCEEDED : UINT := 50102; (* SLV: Address+Size exceeded maximum configured size or modbus limit (125/2000) *)
+	ERROR_FUNCTION_CODE : UINT := 50103; (* SLV: Function code is not supported *)
+	ERROR_MASTER_TIMED_OUT : UINT := 50104; (* SLV: The master did not send a request for a certain TIME *)
+	ERROR_CFG_MASTERS : UINT := 50110; (* SLV: Configuration error in num masters *)
+	ERROR_BAD_SLAVE_DATA : UINT := 50200; (* MAS: Bad data received from slave *)
+	ERROR_SLAVE_DATA_TOO_SHORT : UINT := 50201; (* MAS: Data received from slave too short *)
+	ERROR_SLAVE_DATA_TOO_LONG : UINT := 50202; (* MAS: Data received from slave too long *)
+	ERROR_TIMEOUT_REQ : UINT := 50210; (* MAS: A slave request timed out *)
+	ERROR_TIMEOUT_CONNECT : UINT := 50211; (* MAS: Connection request timed out *)
+	ERROR_DEVICE_ERR : UINT := 50300; (* MAS: Invalid Ethernet device *)
+END_VAR
+(**)
+VAR CONSTANT
+	ERROR_MOD_FUNCTION : UINT := 16#01; (* Modbus error: wrong function code *)
+	ERROR_MOD_ADR : UINT := 16#02; (* Modbus error: wrong address *)
+	ERROR_MOD_VALUE : UINT := 16#03; (* Modbus error: wrong value *)
+END_VAR
+(*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Log book messages*)
+VAR CONSTANT
+	TYP_REQUEST : USINT := 0;
+	TYP_RESPONSE : USINT := 1;
+END_VAR
+(*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Other constants*)
+VAR CONSTANT
+	MODBUS_TCP_PORT : UINT := 500;
+	MODBUS_MAX_REG : UINT := 125; (* Maximum number of modbus registers for one request *)
+	DISABLE : UINT := 65534;
+	BUSY : UINT := 65535;
+	RECEIVE_TIMEOUT : UINT := 5000;
+	DEBUG_LEVEL : USINT := 2;
+	LOG_LINE_LEN : USINT := 50;
+END_VAR

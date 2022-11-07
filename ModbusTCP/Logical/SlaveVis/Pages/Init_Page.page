@@ -173,7 +173,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="290"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.AI_Word[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.AI_Word[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -208,7 +208,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="320"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.AI_Word[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.AI_Word[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -234,7 +234,7 @@
           <Property Name="RightTextGroup" Value="None"/>
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.logger]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.logger]"/>
           <Property Name="TextIndexOffset" Value="0"/>
           <Property Name="TextSource" Value="MultipleStrings"/>
           <Property Name="Top" Value="80"/>
@@ -307,7 +307,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="290"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.AO_Word[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.AO_Word[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -343,7 +343,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="320"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.AO_Word[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.AO_Word[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -404,7 +404,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="400"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.DI_Bool[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.DI_Bool[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -439,7 +439,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="430"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.DI_Bool[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.DI_Bool[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -501,7 +501,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="400"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.DO_Bool[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.DO_Bool[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -537,7 +537,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="430"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.DO_Bool[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.DO_Bool[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -583,7 +583,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="80"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.ModbusTcpSlave.status]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.ModbusTcpSlave.status]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -615,7 +615,7 @@
           <Property Name="SimulationValue" Value="192.168.0.100"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="Top" Value="150"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.ModbusTcpSlave.my_ip]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.ModbusTcpSlave.my_ip]"/>
           <Property Name="Width" Value="180"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_16">
@@ -646,7 +646,7 @@
           <Property Name="SimulationValue" Value="192.168.0.100"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="Top" Value="180"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.ModbusTcpSlave.internal.master_info[0].ip_addr]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.ModbusTcpSlave.internal.master_info[0].ip_addr]"/>
           <Property Name="Width" Value="180"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_17">
@@ -681,7 +681,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="110"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.ModbusTcpSlave.last_error]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.ModbusTcpSlave.last_error]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="73"/>
         </Control>
@@ -734,7 +734,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[BasicButton]"/>
           <Property Name="TextGroup" Value="Source[local].TextGroup[TextGroup_1]"/>
           <Property Name="TextIndex" Value="0"/>
-          <Property Name="TextIndexDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.StartStop]"/>
+          <Property Name="TextIndexDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.StartStop]"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="MultipleTexts"/>
           <Property Name="Top" Value="80"/>
@@ -755,7 +755,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.Programs.ModSlave.StartStop]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.modbusTCP.ModSlave.StartStop]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
