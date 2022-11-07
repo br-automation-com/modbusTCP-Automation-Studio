@@ -16,6 +16,6 @@ END_VAR
 VAR
 	interface : STRING[20];
 	idx : UINT := 0;
-	logger : ARRAY[0..19] OF STRING[50];
+	logger : ARRAY[0..LOG_LINE_NUM] OF STRING[LOG_LINE_LEN];
 	StartStop : BOOL := FALSE;
 END_VAR

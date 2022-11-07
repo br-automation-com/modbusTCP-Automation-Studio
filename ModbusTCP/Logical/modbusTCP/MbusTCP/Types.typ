@@ -24,10 +24,6 @@ TYPE
 		SUB_SEND,
 		SUB_CLOSE_MASTER
 		);
-	modbus_log_typ : 	STRUCT  (*Log of data for the ModbusTCP FUBs*)
-		data_lines : UINT; (*Number of character lines in the log*)
-		pData : UDINT; (*Pointer to the log buffer*)
-	END_STRUCT;
 	receive_buff_typ : 	STRUCT  (*Receive data buffer*)
 		byte : ARRAY[0..500]OF USINT; (*Received data*)
 	END_STRUCT;

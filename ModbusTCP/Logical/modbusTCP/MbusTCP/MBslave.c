@@ -28,23 +28,23 @@
 // ------------------------------------------------------------------------------------------------- 
 // Local functions 
 // ------------------------------------------------------------------------------------------------- 
-void	add_master					(struct MBslave* inst, modbus_log_typ LOGBOOK);
-void	remove_master				(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT 	analyze_req_from_master		(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT	read_discrete_inputs		(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT	read_coils					(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT	read_holding_registers		(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT	read_input_registers		(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT	write_single_coil			(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT	write_single_register		(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT	write_multiple_coils		(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
-UINT	write_multiple_registers	(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK);
+void	add_master					(struct MBslave* inst);
+void	remove_master				(struct MBslave* inst, USINT master);
+UINT 	analyze_req_from_master		(struct MBslave* inst, USINT master);
+UINT	read_discrete_inputs		(struct MBslave* inst, USINT master);
+UINT	read_coils					(struct MBslave* inst, USINT master);
+UINT	read_holding_registers		(struct MBslave* inst, USINT master);
+UINT	read_input_registers		(struct MBslave* inst, USINT master);
+UINT	write_single_coil			(struct MBslave* inst, USINT master);
+UINT	write_single_register		(struct MBslave* inst, USINT master);
+UINT	write_multiple_coils		(struct MBslave* inst, USINT master);
+UINT	write_multiple_registers	(struct MBslave* inst, USINT master);
 UINT	create_error_message		(struct MBslave* inst, USINT master, USINT error_code, UINT error_last);
 
 UINT MySwapUINT(UINT data);
 INT MySwapINT(INT data);
-void NewLogEntry(STRING message[LOG_LINE_LEN], modbus_log_typ LOGBOOK);
-void MessageLog(USINT type, USINT function_code, UINT start_addr, UINT length, modbus_log_typ LOGBOOK);
+void NewLogEntry(STRING message[LOG_LINE_LEN], UDINT p_log);
+void MessageLog(USINT type, USINT function_code, UINT start_addr, UINT length, UDINT p_log);
 
 // ------------------------------------------------------------------------------------------------- 
 // Slave function block 
@@ -64,7 +64,7 @@ void MBslave(struct MBslave* inst)
 			if((sizeof(inst->internal.master_info)/sizeof(inst->internal.master_info[0]) != sizeof(inst->internal.tcp_receive)/sizeof(inst->internal.tcp_receive[0])) ||
 				(sizeof(inst->internal.receive_buff)/sizeof(inst->internal.receive_buff[0]) != sizeof(inst->internal.tcp_receive)/sizeof(inst->internal.tcp_receive[0])))
 			{
-				NewLogEntry("Configuration missmatch num masters", inst->log);
+				NewLogEntry("Configuration missmatch num masters", inst->p_log);
 				inst->status 		= 50110;
 				inst->internal.step = ERROR;
 				break;
@@ -121,7 +121,7 @@ void MBslave(struct MBslave* inst)
 				// Success  	
 				if (inst->internal.tcp_open.status == 0)
 				{
-					NewLogEntry("Open port successful", inst->log);
+					NewLogEntry("Open port successful", inst->p_log);
 					inst->internal.tcp_open.enable = 0;
 					TcpOpen(&inst->internal.tcp_open);
 						
@@ -197,13 +197,13 @@ void MBslave(struct MBslave* inst)
 				// If a new master is connected, add it to the structure  	
 				if(inst->internal.tcp_server.status == 0) 
 				{
-					add_master(inst, inst->log);
+					add_master(inst);
 					if(IsI386 || IsARM) inst->internal.step = SET_LINGER;
 					break;
 				}
 				else if(inst->internal.tcp_server.status == tcpERR_INVALID_IDENT || inst->internal.tcp_server.status == tcpERR_NOMORE_IDENTS || inst->internal.tcp_server.status == tcpERR_SOCKET_LISTEN || inst->internal.tcp_server.status == tcpERR_SOCKET_ACCEPT)
 				{
-					NewLogEntry("ERR: TcpServer", inst->log);
+					NewLogEntry("ERR: TcpServer", inst->p_log);
 					inst->last_error = inst->internal.tcp_server.status;
 					inst->internal.step = CLOSE_PORT;
 				}
@@ -242,13 +242,13 @@ void MBslave(struct MBslave* inst)
 							{
 								inst->internal.master_info[inst->internal.i].timeout_timer.IN = 0;
 								inst->internal.master_info[inst->internal.i].disconnect = 0;
-								inst->internal.send_byte = analyze_req_from_master(inst, inst->internal.i, inst->log);
+								inst->internal.send_byte = analyze_req_from_master(inst, inst->internal.i);
 								inst->internal.substep = SUB_SEND;
 							}
 							else
 							{
 								inst->internal.send_byte = create_error_message(inst, inst->internal.i, ERROR_MOD_ADR, ERROR_REC_BUF_EXCEEDED);
-								NewLogEntry("Receive buffer exceeded", inst->log);
+								NewLogEntry("Receive buffer exceeded", inst->p_log);
 								inst->internal.substep = SUB_SEND;
 							}
 						}
@@ -270,7 +270,7 @@ void MBslave(struct MBslave* inst)
 							((inst->internal.tcp_receive[inst->internal.i].status == 0) &&
 							(inst->internal.tcp_receive[inst->internal.i].recvlen == 0)))
 						{
-							NewLogEntry("Master closed connection", inst->log);
+							NewLogEntry("Master closed connection", inst->p_log);
 							inst->internal.master_info[inst->internal.i].timeout_timer.IN = 0;
 							inst->internal.master_info[inst->internal.i].disconnect = 0;
 							inst->internal.substep = SUB_CLOSE_MASTER;
@@ -279,7 +279,7 @@ void MBslave(struct MBslave* inst)
 							// Close master connection when error occurs 
 						else if(inst->internal.tcp_receive[inst->internal.i].status != 0)
 						{
-							NewLogEntry("ERR: TcpRecv", inst->log);
+							NewLogEntry("ERR: TcpRecv", inst->p_log);
 							inst->internal.master_info[inst->internal.i].timeout_timer.IN = 0;
 							inst->internal.master_info[inst->internal.i].disconnect = 0;
 							inst->internal.substep = SUB_CLOSE_MASTER;
@@ -291,7 +291,7 @@ void MBslave(struct MBslave* inst)
 						// Close master connection when master times out 
 						if ((inst->internal.master_info[inst->internal.i].disconnect == 1) && (inst->internal.master_info[inst->internal.i].ident != 0))
 						{
-							NewLogEntry("Master timed out", inst->log);
+							NewLogEntry("Master timed out", inst->p_log);
 							inst->internal.master_info[inst->internal.i].timeout_timer.IN = 0;
 							inst->internal.master_info[inst->internal.i].disconnect = 0;
 							inst->last_error = ERROR_MASTER_TIMED_OUT;
@@ -316,7 +316,7 @@ void MBslave(struct MBslave* inst)
 						// Check for timeout of the master timeout is activated	 
 						if ((inst->internal.master_info[inst->internal.i].disconnect == 1) && (inst->internal.master_info[inst->internal.i].ident != 0))
 						{
-							NewLogEntry("Master timeout", inst->log);
+							NewLogEntry("Master timeout", inst->p_log);
 							inst->internal.master_info[inst->internal.i].timeout_timer.IN = 0;
 							inst->internal.master_info[inst->internal.i].disconnect = 0;
 							inst->internal.substep = SUB_CLOSE_MASTER;
@@ -333,13 +333,13 @@ void MBslave(struct MBslave* inst)
 						// Success  	
 						if(inst->internal.tcp_close.status == 0)
 						{
-							remove_master(inst, inst->internal.i, inst->log);
+							remove_master(inst, inst->internal.i);
 							inst->internal.master_info[inst->internal.i].disconnect = 0;
 							inst->internal.substep = SUB_WAIT;
 						}
 						else if(inst->internal.tcp_close.status != BUSY)
 						{
-							NewLogEntry("ERR: TcpClose", inst->log);
+							NewLogEntry("ERR: TcpClose", inst->p_log);
 							inst->internal.step = CLOSE_PORT;
 						}
 						inst->status = inst->internal.tcp_close.status; 
@@ -357,9 +357,9 @@ void MBslave(struct MBslave* inst)
 			TcpClose(&inst->internal.tcp_close);
 			if(inst->internal.tcp_close.status != 65535)
 			{
-				for (i=0;i<sizeof(inst->internal.master_info)/sizeof(inst->internal.master_info[0]);i++) remove_master(inst, i, inst->log);
+				for (i=0;i<sizeof(inst->internal.master_info)/sizeof(inst->internal.master_info[0]);i++) remove_master(inst, i);
 				inst->status = inst->internal.tcp_close.status;
-				NewLogEntry("Port closed", inst->log);
+				NewLogEntry("Port closed", inst->p_log);
 				inst->internal.step = ERROR;
 			}
 			break;
@@ -390,7 +390,7 @@ void MBslave(struct MBslave* inst)
 	}
 }
 
-void add_master(struct MBslave* inst, struct modbus_log_typ LOGBOOK)
+void add_master(struct MBslave* inst)
 {
 	inst->internal.master_last = 0;
 	
@@ -410,26 +410,26 @@ void add_master(struct MBslave* inst, struct modbus_log_typ LOGBOOK)
 				inst->internal.tcp_receive[inst->internal.master_last].flags		= 0;
 				inst->internal.master_nr++;
 				
-				NewLogEntry("Added master", LOGBOOK);
-				NewLogEntry((STRING *)inst->internal.master_info[inst->internal.master_last].ip_addr, LOGBOOK);
+				NewLogEntry("Added master", inst->p_log);
+				NewLogEntry((STRING *)inst->internal.master_info[inst->internal.master_last].ip_addr, inst->p_log);
 				return;
 			}
 		}
 	}
 	else
 	{
-		NewLogEntry("ERR: Too many masters", LOGBOOK);
+		NewLogEntry("ERR: Too many masters", inst->p_log);
 		inst->last_error = ERROR_TOO_MANY_MASTERS;
 	}
 }
 
-void remove_master(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+void remove_master(struct MBslave* inst, USINT master)
 { 
 	// Remove master only if the number of masters is higher than 0 
 	if (inst->internal.master_nr > 0)
 	{
-		NewLogEntry("Removed master", LOGBOOK);
-		NewLogEntry((STRING *)inst->internal.master_info[master].ip_addr, LOGBOOK);
+		NewLogEntry("Removed master", inst->p_log);
+		NewLogEntry((STRING *)inst->internal.master_info[master].ip_addr, inst->p_log);
 	
 		inst->internal.tcp_receive[master].enable 	= 0;
 		inst->internal.master_info[master].ident	= 0;
@@ -439,14 +439,14 @@ void remove_master(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
 	}
 }
 
-UINT analyze_req_from_master(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT analyze_req_from_master(struct MBslave* inst, USINT master)
 {
 	t_master_request			request;
 	UINT						uint_var;
 
 	if(inst->internal.tcp_receive[master].recvlen < 8)											// If buffer length is less than the minimum frame length 
 	{
-		NewLogEntry("ERR: Message too small", LOGBOOK);
+		NewLogEntry("ERR: Message too small", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_MESSAGE_SIZE);
 	}
 	else
@@ -466,17 +466,17 @@ UINT analyze_req_from_master(struct MBslave* inst, USINT master, modbus_log_typ 
 			(request.length			== 0)	||
 			(request.function_code	== 0))
 		{
-			NewLogEntry("ERR: Bad message format", LOGBOOK);
+			NewLogEntry("ERR: Bad message format", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_MESSAGE_FORMAT);
 		}
 		else if ((request.function_code	== READ_COILS || request.function_code	== READ_DISCRETE_INPUTS || request.function_code == WRITE_MULTIPLE_COILS) && request.quantity > MODBUS_MAX_REG*2*8)
 		{
-			NewLogEntry("ERR: Max length exceeded", LOGBOOK);
+			NewLogEntry("ERR: Max length exceeded", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_QUANTITY);
 		}
 		else if ((request.function_code	== READ_HOLDING_REGISTERS || request.function_code	== READ_INPUT_REGISTERS || request.function_code == WRITE_MULTIPLE_REGISTERS) && request.quantity > MODBUS_MAX_REG)
 		{
-			NewLogEntry("ERR: Max length exceeded", LOGBOOK);
+			NewLogEntry("ERR: Max length exceeded", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_QUANTITY);
 		}
 		else
@@ -484,31 +484,31 @@ UINT analyze_req_from_master(struct MBslave* inst, USINT master, modbus_log_typ 
 			switch(request.function_code)
 			{
 				case READ_COILS:							// 0x01 
-					return read_coils(inst, master, LOGBOOK);
+					return read_coils(inst, master);
 				
 				case READ_DISCRETE_INPUTS:					// 0x02 
-					return read_discrete_inputs(inst, master, LOGBOOK);
+					return read_discrete_inputs(inst, master);
 				
 				case READ_HOLDING_REGISTERS:				// 0x03 
-					return read_holding_registers(inst, master, LOGBOOK);	
+					return read_holding_registers(inst, master);	
 				
 				case READ_INPUT_REGISTERS:					// 0x04 
-					return read_input_registers(inst, master, LOGBOOK);	
+					return read_input_registers(inst, master);	
 				
 				case WRITE_SINGLE_COIL:						// 0x05 
-					return write_single_coil(inst, master, LOGBOOK);
+					return write_single_coil(inst, master);
 				
 				case WRITE_SINGLE_REGISTER:					// 0x06 
-					return write_single_register(inst, master, LOGBOOK);
+					return write_single_register(inst, master);
 
 				case WRITE_MULTIPLE_COILS:					// 0x0F 
-					return write_multiple_coils(inst, master, LOGBOOK);
+					return write_multiple_coils(inst, master);
 
 				case WRITE_MULTIPLE_REGISTERS:				// 0x10 
-					return write_multiple_registers(inst, master, LOGBOOK);
+					return write_multiple_registers(inst, master);
 				
 				default:
-					NewLogEntry("ERR: Unsupported function code", LOGBOOK);
+					NewLogEntry("ERR: Unsupported function code", inst->p_log);
 					return create_error_message(inst, master, ERROR_MOD_FUNCTION, ERROR_FUNCTION_CODE);
 			}
 			return 0;
@@ -542,7 +542,7 @@ UINT create_error_message(struct MBslave* inst, USINT master, USINT error_code, 
 	return 9;
 }
 
-UINT read_coils(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT read_coils(struct MBslave* inst, USINT master)
 {
 	t_read_request		read_coils;
 	UINT				i;
@@ -555,7 +555,7 @@ UINT read_coils(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
 	brsmemcpy((UDINT)&uint_var, (UDINT)&(inst->internal.receive_buff[master].byte[10]), sizeof(uint_var));
 	read_coils.quantity = MySwapUINT(uint_var);
 	
-	MessageLog (TYP_REQUEST, READ_COILS, read_coils.starting_addr, read_coils.quantity, LOGBOOK);
+	MessageLog (TYP_REQUEST, READ_COILS, read_coils.starting_addr, read_coils.quantity, inst->p_log);
 
 	if( read_coils.starting_addr <= sizeof((*(inst->p_cfg)).p_coils)/4)
 	{
@@ -599,28 +599,28 @@ UINT read_coils(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
 				}
 				else // Variable address is empty 
 				{
-					NewLogEntry("ERR: Empty variable ADR", LOGBOOK);
+					NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 					return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EMPTY);
 				}			
 			}
-			MessageLog (TYP_RESPONSE, READ_COILS, read_coils.starting_addr, read_coils.quantity, LOGBOOK);
+			MessageLog (TYP_RESPONSE, READ_COILS, read_coils.starting_addr, read_coils.quantity, inst->p_log);
 			return length + 6;
 		}
 		else // Length exceeds maximum range 
 		{
-			NewLogEntry("ERR: Length exceeds max", LOGBOOK);
+			NewLogEntry("ERR: Length exceeds max", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_LENGTH_EXCEEDED);
 		}			
 	}
 	else // Address exceed maximum range 
 	{
-		NewLogEntry("ERR: Address exceeds max", LOGBOOK);
+		NewLogEntry("ERR: Address exceeds max", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_ADR_EXCEEDED);
 	}
 	return 0;
 }
 
-UINT read_discrete_inputs(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT read_discrete_inputs(struct MBslave* inst, USINT master)
 {
 	t_read_request	read_discrete_inputs;
 	UINT			i;
@@ -633,7 +633,7 @@ UINT read_discrete_inputs(struct MBslave* inst, USINT master, modbus_log_typ LOG
 	brsmemcpy((UDINT)&uint_var, (UDINT)&(inst->internal.receive_buff[master].byte[10]), sizeof(uint_var));
 	read_discrete_inputs.quantity = MySwapUINT(uint_var);
 	
-	MessageLog (TYP_REQUEST, READ_DISCRETE_INPUTS, read_discrete_inputs.starting_addr, read_discrete_inputs.quantity, LOGBOOK);
+	MessageLog (TYP_REQUEST, READ_DISCRETE_INPUTS, read_discrete_inputs.starting_addr, read_discrete_inputs.quantity, inst->p_log);
 	
 	if( read_discrete_inputs.starting_addr <= sizeof((*(inst->p_cfg)).p_discrete_inputs)/4)
 	{
@@ -677,29 +677,29 @@ UINT read_discrete_inputs(struct MBslave* inst, USINT master, modbus_log_typ LOG
 				}
 				else // Variable address is empty 
 				{
-					NewLogEntry("ERR: Empty variable ADR", LOGBOOK);
+					NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 					return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EMPTY);
 				}			
 			}
-			MessageLog (TYP_RESPONSE, READ_DISCRETE_INPUTS, read_discrete_inputs.starting_addr, read_discrete_inputs.quantity, LOGBOOK);
+			MessageLog (TYP_RESPONSE, READ_DISCRETE_INPUTS, read_discrete_inputs.starting_addr, read_discrete_inputs.quantity, inst->p_log);
 			return length + 6;
 		}
 		else // Length exceeds maximum range 
 		{
-			NewLogEntry("ERR: Length exceeds max", LOGBOOK);
+			NewLogEntry("ERR: Length exceeds max", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_LENGTH_EXCEEDED);
 		}			
 	}
 	else // Address exceed maximum range 
 	{
-		NewLogEntry("ERR: Address exceeds max", LOGBOOK);
+		NewLogEntry("ERR: Address exceeds max", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_ADR_EXCEEDED);
 	}
 
 	return 0;
 }
 
-UINT read_holding_registers(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT read_holding_registers(struct MBslave* inst, USINT master)
 {
 	t_read_request	read_holding_registers;
 	UINT			i;
@@ -713,7 +713,7 @@ UINT read_holding_registers(struct MBslave* inst, USINT master, modbus_log_typ L
 	brsmemcpy((UDINT)&uint_var, (UDINT)&(inst->internal.receive_buff[master].byte[10]), sizeof(uint_var));
 	read_holding_registers.quantity = MySwapUINT(uint_var);
 	
-	MessageLog (TYP_REQUEST, READ_HOLDING_REGISTERS, read_holding_registers.starting_addr, read_holding_registers.quantity, LOGBOOK);
+	MessageLog (TYP_REQUEST, READ_HOLDING_REGISTERS, read_holding_registers.starting_addr, read_holding_registers.quantity, inst->p_log);
 	
 	if( read_holding_registers.starting_addr <= sizeof((*(inst->p_cfg)).p_holding_registers)/4)
 	{
@@ -745,29 +745,29 @@ UINT read_holding_registers(struct MBslave* inst, USINT master, modbus_log_typ L
 				}
 				else // Variable address is empty 
 				{
-					NewLogEntry("ERR: Empty variable ADR", LOGBOOK);
+					NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 					return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EMPTY);	
 				}
 			}
-			MessageLog (TYP_RESPONSE, READ_HOLDING_REGISTERS, read_holding_registers.starting_addr, read_holding_registers.quantity, LOGBOOK);
+			MessageLog (TYP_RESPONSE, READ_HOLDING_REGISTERS, read_holding_registers.starting_addr, read_holding_registers.quantity, inst->p_log);
 			return length + 6;
 		}
 		else // Length exceeds maximum range 
 		{
-			NewLogEntry("ERR: Length exceeds max", LOGBOOK);
+			NewLogEntry("ERR: Length exceeds max", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_LENGTH_EXCEEDED);
 		}			
 	}
 	else // Address exceed maximum range 
 	{
-		NewLogEntry("ERR: Address exceeds max", LOGBOOK);
+		NewLogEntry("ERR: Address exceeds max", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_ADR_EXCEEDED);
 	}
 
 	return 0;
 }
 
-UINT read_input_registers(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT read_input_registers(struct MBslave* inst, USINT master)
 {
 	t_read_request	read_input_registers;
 	UINT			i;
@@ -781,7 +781,7 @@ UINT read_input_registers(struct MBslave* inst, USINT master, modbus_log_typ LOG
 	brsmemcpy((UDINT)&uint_var, (UDINT)&(inst->internal.receive_buff[master].byte[10]), sizeof(uint_var));
 	read_input_registers.quantity = MySwapUINT(uint_var);
 	
-	MessageLog (TYP_REQUEST, READ_INPUT_REGISTERS, read_input_registers.starting_addr, read_input_registers.quantity, LOGBOOK);
+	MessageLog (TYP_REQUEST, READ_INPUT_REGISTERS, read_input_registers.starting_addr, read_input_registers.quantity, inst->p_log);
 	
 	if( read_input_registers.starting_addr <= sizeof((*(inst->p_cfg)).p_input_registers)/4)
 	{
@@ -813,29 +813,29 @@ UINT read_input_registers(struct MBslave* inst, USINT master, modbus_log_typ LOG
 				}
 				else // Variable address is empty 
 				{
-					NewLogEntry("ERR: Empty variable ADR", LOGBOOK);
+					NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 					return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EMPTY);
 				}
 			}
-			MessageLog (TYP_RESPONSE, READ_INPUT_REGISTERS, read_input_registers.starting_addr, read_input_registers.quantity, LOGBOOK);
+			MessageLog (TYP_RESPONSE, READ_INPUT_REGISTERS, read_input_registers.starting_addr, read_input_registers.quantity, inst->p_log);
 			return length + 6;
 		}
 		else // Lenghth exceeds maximum range 
 		{
-			NewLogEntry("ERR: Length exceeds max", LOGBOOK);
+			NewLogEntry("ERR: Length exceeds max", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_LENGTH_EXCEEDED);
 		}			
 	}
 	else // Address exceed maximum range 
 	{
-		NewLogEntry("ERR: Address exceeds max", LOGBOOK);
+		NewLogEntry("ERR: Address exceeds max", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EXCEEDED);
 	}
 
 	return 0;
 }
 
-UINT write_single_coil(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT write_single_coil(struct MBslave* inst, USINT master)
 {
 	t_single_write_request	write_single_coil;
 	UINT					uint_var;
@@ -846,7 +846,7 @@ UINT write_single_coil(struct MBslave* inst, USINT master, modbus_log_typ LOGBOO
 	brsmemcpy((UDINT)&uint_var, (UDINT)&(inst->internal.receive_buff[master].byte[10]), sizeof(uint_var));
 	write_single_coil.value = MySwapUINT(uint_var);
 	
-	MessageLog (TYP_REQUEST, WRITE_SINGLE_COIL, write_single_coil.starting_addr, 1, LOGBOOK);
+	MessageLog (TYP_REQUEST, WRITE_SINGLE_COIL, write_single_coil.starting_addr, 1, inst->p_log);
 	
 	if((write_single_coil.value == ON) || (write_single_coil.value == OFF))
 	{
@@ -881,31 +881,31 @@ UINT write_single_coil(struct MBslave* inst, USINT master, modbus_log_typ LOGBOO
 				// Value: 2 byte 
 				brsmemcpy((UDINT)&inst->internal.send_buff[10], (UDINT)&inst->internal.receive_buff[master].byte[10], 2);
 			
-				MessageLog (TYP_RESPONSE, WRITE_SINGLE_COIL, write_single_coil.starting_addr, write_single_coil.value, LOGBOOK);
+				MessageLog (TYP_RESPONSE, WRITE_SINGLE_COIL, write_single_coil.starting_addr, write_single_coil.value, inst->p_log);
 				return 12;
 			}
 			else // Variable address is empty 
 			{
-				NewLogEntry("ERR: Empty variable ADR", LOGBOOK);
+				NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 				return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EMPTY);
 			}			
 		}
 		else // Address exceeds maximum range 
 		{
-			NewLogEntry("ERR: Address exceeds max", LOGBOOK);
+			NewLogEntry("ERR: Address exceeds max", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_ADR_EXCEEDED);
 		}
 	}
 	else // Address+Lenghth exceed maximum range 
 	{
-		NewLogEntry("ERR: Not boolean value", LOGBOOK);
+		NewLogEntry("ERR: Not boolean value", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_LENGTH_EXCEEDED);
 	}
 
 	return 0;
 }
 
-UINT write_single_register(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT write_single_register(struct MBslave* inst, USINT master)
 {
 	t_single_write_request	write_single_register;
 	INT						int_var;
@@ -917,7 +917,7 @@ UINT write_single_register(struct MBslave* inst, USINT master, modbus_log_typ LO
 	brsmemcpy((UDINT)&int_var, (UDINT)&(inst->internal.receive_buff[master].byte[10]), sizeof(int_var));
 	write_single_register.value = MySwapUINT(int_var);
 	
-	MessageLog (TYP_REQUEST, WRITE_SINGLE_REGISTER, write_single_register.starting_addr, 1, LOGBOOK);
+	MessageLog (TYP_REQUEST, WRITE_SINGLE_REGISTER, write_single_register.starting_addr, 1, inst->p_log);
 	
 	if((write_single_register.starting_addr <= sizeof((*(inst->p_cfg)).p_holding_registers)/4))
 	{
@@ -943,24 +943,24 @@ UINT write_single_register(struct MBslave* inst, USINT master, modbus_log_typ LO
 			// Value: 2 byte 
 			brsmemcpy((UDINT)&inst->internal.send_buff[10], (UDINT)&inst->internal.receive_buff[master].byte[10], 2);
 		
-			MessageLog (TYP_RESPONSE, WRITE_SINGLE_REGISTER, write_single_register.starting_addr, write_single_register.value, LOGBOOK);
+			MessageLog (TYP_RESPONSE, WRITE_SINGLE_REGISTER, write_single_register.starting_addr, write_single_register.value, inst->p_log);
 			return 12;
 		}
 		else // Variable address is empty 
 		{
-			NewLogEntry("ERR: Empty variable ADR", LOGBOOK);
+			NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EMPTY);
 		}			
 	}
 	else // Address exceeds maximum range 
 	{
-		NewLogEntry("ERR: Address exceeds max", LOGBOOK);
+		NewLogEntry("ERR: Address exceeds max", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EXCEEDED);
 	}
 	return 0;
 }
 
-UINT write_multiple_coils(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT write_multiple_coils(struct MBslave* inst, USINT master)
 {
 	t_multiple_write_request	write_multiple_coil;
 	UINT						uint_var;
@@ -973,7 +973,7 @@ UINT write_multiple_coils(struct MBslave* inst, USINT master, modbus_log_typ LOG
 	write_multiple_coil.quantity = MySwapUINT(uint_var);
 	write_multiple_coil.byte_nr = inst->internal.receive_buff[master].byte[12];
 	
-	MessageLog (TYP_REQUEST, WRITE_MULTIPLE_COILS, write_multiple_coil.starting_addr, write_multiple_coil.quantity, LOGBOOK);
+	MessageLog (TYP_REQUEST, WRITE_MULTIPLE_COILS, write_multiple_coil.starting_addr, write_multiple_coil.quantity, inst->p_log);
 	
 	if(write_multiple_coil.starting_addr <= sizeof((*(inst->p_cfg)).p_coils)/4)
 	{
@@ -995,7 +995,7 @@ UINT write_multiple_coils(struct MBslave* inst, USINT master, modbus_log_typ LOG
 				}
 				else // Variable address is empty 
 				{
-					NewLogEntry("ERR: Empty variable ADR", LOGBOOK);
+					NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 					return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EMPTY);
 				}	
 			}
@@ -1019,24 +1019,24 @@ UINT write_multiple_coils(struct MBslave* inst, USINT master, modbus_log_typ LOG
 			// Value: 2 byte 
 			brsmemcpy((UDINT)&inst->internal.send_buff[10], (UDINT)&inst->internal.receive_buff[master].byte[10], 2);
 			
-			MessageLog (TYP_RESPONSE, WRITE_MULTIPLE_COILS, write_multiple_coil.starting_addr, write_multiple_coil.quantity, LOGBOOK);
+			MessageLog (TYP_RESPONSE, WRITE_MULTIPLE_COILS, write_multiple_coil.starting_addr, write_multiple_coil.quantity, inst->p_log);
 			return 12;
 		}
 		else // Length exceeds maximum range 
 		{
-			NewLogEntry("ERR: Length exceeds max", LOGBOOK);
+			NewLogEntry("ERR: Length exceeds max", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_LENGTH_EXCEEDED);
 		}			
 	}
 	else // Address exceed maximum range 
 	{
-		NewLogEntry("ERR: Address exceeds max", LOGBOOK);
+		NewLogEntry("ERR: Address exceeds max", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_ADR_EXCEEDED);
 	}
 	return 0;
 }
 
-UINT write_multiple_registers(struct MBslave* inst, USINT master, modbus_log_typ LOGBOOK)
+UINT write_multiple_registers(struct MBslave* inst, USINT master)
 {
 	t_multiple_write_request	write_multiple_register;
 	INT							int_var;
@@ -1050,7 +1050,7 @@ UINT write_multiple_registers(struct MBslave* inst, USINT master, modbus_log_typ
 	write_multiple_register.quantity = MySwapUINT(uint_var);
 	write_multiple_register.byte_nr = inst->internal.receive_buff[master].byte[12];
 	
-	MessageLog (TYP_REQUEST, WRITE_MULTIPLE_REGISTERS, write_multiple_register.starting_addr, write_multiple_register.quantity, LOGBOOK);
+	MessageLog (TYP_REQUEST, WRITE_MULTIPLE_REGISTERS, write_multiple_register.starting_addr, write_multiple_register.quantity, inst->p_log);
 	
 	if(write_multiple_register.starting_addr <= sizeof((*(inst->p_cfg)).p_holding_registers)/4)
 	{
@@ -1066,7 +1066,7 @@ UINT write_multiple_registers(struct MBslave* inst, USINT master, modbus_log_typ
 				}
 				else // Variable address is empty 
 				{
-					NewLogEntry("ERR: Empty variable ADR", LOGBOOK);
+					NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 					return create_error_message(inst, master, ERROR_MOD_VALUE, ERROR_ADR_EMPTY);
 				}
 			}
@@ -1090,18 +1090,18 @@ UINT write_multiple_registers(struct MBslave* inst, USINT master, modbus_log_typ
 			// Value: 2 byte 
 			brsmemcpy((UDINT)&inst->internal.send_buff[10], (UDINT)&inst->internal.receive_buff[master].byte[10], 2);
 			
-			MessageLog (TYP_RESPONSE, WRITE_MULTIPLE_REGISTERS, write_multiple_register.starting_addr, write_multiple_register.quantity, LOGBOOK);
+			MessageLog (TYP_RESPONSE, WRITE_MULTIPLE_REGISTERS, write_multiple_register.starting_addr, write_multiple_register.quantity, inst->p_log);
 			return 12;
 		}
 		else // Lenghth exceeds maximum range 
 		{
-			NewLogEntry("ERR: Length exceeds max", LOGBOOK);
+			NewLogEntry("ERR: Length exceeds max", inst->p_log);
 			return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_ADR_EXCEEDED);
 		}			
 	}
 	else // Address exceed maximum range 
 	{
-		NewLogEntry("ERR: Address exceeds max", LOGBOOK);
+		NewLogEntry("ERR: Address exceeds max", inst->p_log);
 		return create_error_message(inst, master, ERROR_MOD_ADR, ERROR_LENGTH_EXCEEDED);
 	}
 	return 0;

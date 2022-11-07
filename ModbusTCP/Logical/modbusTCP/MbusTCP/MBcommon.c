@@ -28,7 +28,7 @@
 
 UINT MySwapUINT(UINT data);
 INT MySwapINT(INT data);
-void NewLogEntry(STRING message[LOG_LINE_LEN], modbus_log_typ LOGBOOK);
+void NewLogEntry(STRING message[LOG_LINE_LEN], UDINT LOGBOOK);
 
 // ------------------------------------------------------------------------------------------------- 
 // Swap or not swap, that is the question 
@@ -47,7 +47,7 @@ INT MySwapINT(INT data)
 // ------------------------------------------------------------------------------------------------- 
 // Generate logbook message for requests and responses 
 // ------------------------------------------------------------------------------------------------- 
-void MessageLog(USINT type, USINT function_code, UINT start_addr, UINT length, modbus_log_typ LOGBOOK)
+void MessageLog(USINT type, USINT function_code, UINT start_addr, UINT length, UDINT p_log)
 {
 	STRING str1[LOG_LINE_LEN];
 	STRING str2[LOG_LINE_LEN];
@@ -73,19 +73,19 @@ void MessageLog(USINT type, USINT function_code, UINT start_addr, UINT length, m
 		brsstrcat((UDINT)str1, (UDINT)str2);
 		brsstrcat((UDINT)str1, (UDINT)" ok");
 	}
-	NewLogEntry(str1, LOGBOOK);	
+	NewLogEntry(str1, p_log);	
 }
 
 // ------------------------------------------------------------------------------------------------- 
 //	Generate logbook message 
 // ------------------------------------------------------------------------------------------------- 
-void NewLogEntry(STRING message[LOG_LINE_LEN], modbus_log_typ LOGBOOK)
+void NewLogEntry(STRING message[LOG_LINE_LEN], UDINT p_log)
 {
 	RTCtime_typ	RTCtime_struct;
 	STRING		lstr1[LOG_LINE_LEN], lstr2[LOG_LINE_LEN];
 	
 	// Check if logging is enabled before writing to log 
-	if ((LOGBOOK.data_lines > 0) && (LOGBOOK.pData != 0))
+	if (p_log != 0)
 	{
 		brsstrcpy((UDINT)lstr1, (UDINT)"");
 		brsstrcpy((UDINT)lstr2, (UDINT)"");
@@ -108,7 +108,7 @@ void NewLogEntry(STRING message[LOG_LINE_LEN], modbus_log_typ LOGBOOK)
 		brsstrcat((UDINT)lstr2, (UDINT)lstr1);
 		brsstrcat((UDINT)lstr2, (UDINT)" ");
 		brsstrcat((UDINT)lstr2, (UDINT)message);
-		brsmemmove((UDINT)(void*)(LOGBOOK.pData)+LOG_LINE_LEN+1, (UDINT)(void*)LOGBOOK.pData, (LOG_LINE_LEN+1)*(LOGBOOK.data_lines-1));
-		brsstrcpy((UDINT)(void*)LOGBOOK.pData, (UDINT)lstr2);
+		brsmemmove((UDINT)(void*)(p_log)+LOG_LINE_LEN+1, (UDINT)(void*)p_log, (LOG_LINE_LEN+1)*(LOG_LINE_NUM-1));
+		brsstrcpy((UDINT)(void*)p_log, (UDINT)lstr2);
 	}
 }

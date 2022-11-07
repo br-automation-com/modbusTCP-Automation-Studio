@@ -17,13 +17,13 @@
 // ------------------------------------------------------------------------------------------------- 
 // Local functions 
 // ------------------------------------------------------------------------------------------------- 
-UINT create_request_to_slave (struct modbus_master_cfg_typ* config, USINT req_nr, USINT* send_buff, UINT size_buf, UINT transaction_id, modbus_log_typ LOGBOOK);
-UINT analyze_answer_from_slave (struct modbus_master_cfg_typ* config, USINT req_nr, USINT* receive_buff, UINT transaction_id, modbus_log_typ LOGBOOK);
+UINT create_request_to_slave (struct modbus_master_cfg_typ* config, USINT req_nr, USINT* send_buff, UINT size_buf, UINT transaction_id, UDINT p_log);
+UINT analyze_answer_from_slave (struct modbus_master_cfg_typ* config, USINT req_nr, USINT* receive_buff, UINT transaction_id, UDINT p_log);
 
 UINT MySwapUINT(UINT data);
 INT MySwapINT(INT data);
-void NewLogEntry(STRING message[LOG_LINE_LEN], modbus_log_typ LOGBOOK);
-void MessageLog(USINT type, USINT function_code, UINT start_addr, UINT length, modbus_log_typ LOGBOOK);
+void NewLogEntry(STRING message[LOG_LINE_LEN], UDINT p_log);
+void MessageLog(USINT type, USINT function_code, UINT start_addr, UINT length, UDINT p_log);
 										
 // ------------------------------------------------------------------------------------------------- 
 // Master function block 
@@ -39,7 +39,7 @@ void MBmaster(struct MBmaster* inst)
 		// Make sure cycle time has a value 
 		if((inst->cycle_time == 0) && (inst->internal.step != ERROR))
 		{
-			NewLogEntry("ERR: Cyclic time is 0", inst->log);
+			NewLogEntry("ERR: Cyclic time is 0", inst->p_log);
 			inst->status 		= ERROR_CYCLIC_ZERO;
 			inst->internal.step = ERROR;
 		}
@@ -65,7 +65,7 @@ void MBmaster(struct MBmaster* inst)
 			if(inst->enable)
 			{
 				inst->internal.step = GET_IP;
-				NewLogEntry("Validating own ip...", inst->log);
+				NewLogEntry("Validating own ip...", inst->p_log);
 			}
 		break;
 		// ------------------------------------------------------------------------------------------ 
@@ -88,7 +88,7 @@ void MBmaster(struct MBmaster* inst)
 				}
 				else if(inst->internal.tcp_ip.status == cfgERR_DEVICE_NOT_EXIST)
 				{
-					NewLogEntry("ERR: Invalid ethernet device", inst->log);
+					NewLogEntry("ERR: Invalid ethernet device", inst->p_log);
 					inst->status 		= ERROR_DEVICE_ERR;
 					inst->internal.step = ERROR;
 				}
@@ -108,14 +108,14 @@ void MBmaster(struct MBmaster* inst)
 				// Success  		
 				if (inst->internal.tcp_open.status == 0)
 				{
-					NewLogEntry("Open port successful", inst->log);
+					NewLogEntry("Open port successful", inst->p_log);
 					inst->internal.tcp_client.enable	= 1;
 					inst->internal.tcp_client.ident		= inst->internal.tcp_open.ident;
 					inst->internal.tcp_client.pServer	= (UDINT)inst->slave_ip_addr;
 					inst->internal.tcp_client.portserv	= inst->port;
 					inst->internal.tcp_send.ident		= inst->internal.tcp_open.ident;
 					inst->internal.tcp_receive.ident	= inst->internal.tcp_open.ident;
-					NewLogEntry("Trying to connect...", inst->log);
+					NewLogEntry("Trying to connect...", inst->p_log);
 					inst->internal.step = WAIT_CONNECTION;
 				}
 				else if(inst->internal.tcp_open.status != BUSY) inst->internal.step = ERROR;
@@ -135,18 +135,18 @@ void MBmaster(struct MBmaster* inst)
 				// Success 		
 				if(inst->internal.tcp_client.status == 0)
 				{
-					NewLogEntry("Connected", inst->log);
+					NewLogEntry("Connected", inst->p_log);
 					inst->internal.step = CREATE_REQUEST;
 				}
 				else if(inst->internal.tcp_client.status == tcpERR_INVALID)
 				{
-					NewLogEntry("ERR: Cant find slave", inst->log);
+					NewLogEntry("ERR: Cant find slave", inst->p_log);
 					inst->status = ERROR_TIMEOUT_CONNECT;
 					inst->internal.step = CLOSE_PORT;
 				}
 				else if(inst->internal.tcp_client.status != BUSY)
 				{
-					NewLogEntry("ERR: Could not establish connection", inst->log);
+					NewLogEntry("ERR: Could not establish connection", inst->p_log);
 					inst->status = ERROR_TIMEOUT_CONNECT;
 					inst->internal.step = ERROR;
 				}
@@ -178,14 +178,14 @@ void MBmaster(struct MBmaster* inst)
 							UINT quantity = (*(inst->p_cfg)).action_param[inst->internal.last_req].quantity;
 							if ((function_code	== READ_COILS || function_code	== READ_DISCRETE_INPUTS || function_code == WRITE_MULTIPLE_COILS) && quantity > MODBUS_MAX_REG*2*8)
 							{
-								NewLogEntry("ERR: Max length exceeded", inst->log);
+								NewLogEntry("ERR: Max length exceeded", inst->p_log);
 								inst->status = ERROR_QUANTITY;
 								inst->last_error = ERROR_QUANTITY;
 								(*(inst->p_cfg)).action_enable[inst->internal.last_req].single = 0;
 							}
 							else if ((function_code	== READ_HOLDING_REGISTERS || function_code	== READ_INPUT_REGISTERS || function_code == WRITE_MULTIPLE_REGISTERS) && quantity > MODBUS_MAX_REG)
 							{
-								NewLogEntry("ERR: Max length exceeded", inst->log);
+								NewLogEntry("ERR: Max length exceeded", inst->p_log);
 								inst->status = ERROR_QUANTITY;
 								inst->last_error = ERROR_QUANTITY;
 								(*(inst->p_cfg)).action_enable[inst->internal.last_req].single = 0;
@@ -194,13 +194,13 @@ void MBmaster(struct MBmaster* inst)
 							{
 								inst->internal.step = SEND_REQUEST;
 								inst->internal.transaction_id++;
-								inst->internal.tcp_send.datalen = create_request_to_slave((modbus_master_cfg_typ*)(inst->p_cfg), inst->internal.last_req, inst->internal.send_buff, sizeof(inst->internal.send_buff), inst->internal.transaction_id, inst->log);
+								inst->internal.tcp_send.datalen = create_request_to_slave((modbus_master_cfg_typ*)(inst->p_cfg), inst->internal.last_req, inst->internal.send_buff, sizeof(inst->internal.send_buff), inst->internal.transaction_id, inst->p_log);
 							}
 							inst->internal.send_timer[inst->internal.last_req] = 0;
 						}
 						else // Variable address is empty 
 						{
-						NewLogEntry("ERR: Empty variable ADR", inst->log);
+						NewLogEntry("ERR: Empty variable ADR", inst->p_log);
 						inst->status 		= ERROR_ADR_EMPTY;
 						inst->internal.step = ERROR;
 						}
@@ -249,18 +249,18 @@ void MBmaster(struct MBmaster* inst)
 					{
 						if((inst->internal.tcp_receive.recvlen > 8) && (inst->internal.tcp_receive.recvlen < sizeof(inst->internal.receive_buff)))
 						{	
-							receive_status = analyze_answer_from_slave((modbus_master_cfg_typ*)(inst->p_cfg), inst->internal.last_req, inst->internal.receive_buff, inst->internal.transaction_id, inst->log);				
+							receive_status = analyze_answer_from_slave((modbus_master_cfg_typ*)(inst->p_cfg), inst->internal.last_req, inst->internal.receive_buff, inst->internal.transaction_id, inst->p_log);				
 							if(receive_status) inst->last_error = ERROR_BAD_SLAVE_DATA;							
 						}
 						else if(inst->internal.tcp_receive.recvlen >= sizeof(inst->internal.receive_buff))
 						{						
-							NewLogEntry("ERR: Data received too long", inst->log);
+							NewLogEntry("ERR: Data received too long", inst->p_log);
 							receive_status = 1;
 							inst->last_error = ERROR_SLAVE_DATA_TOO_LONG;
 						}
 						else
 						{						
-							NewLogEntry("ERR: Data received too short", inst->log);
+							NewLogEntry("ERR: Data received too short", inst->p_log);
 							receive_status = 1;
 							inst->last_error = ERROR_SLAVE_DATA_TOO_SHORT;
 						}
@@ -277,7 +277,7 @@ void MBmaster(struct MBmaster* inst)
 				inst->internal.receive_timer += inst->cycle_time;
 				if (inst->internal.receive_timer >= RECEIVE_TIMEOUT)
 				{
-					NewLogEntry("ERR: Request timed out", inst->log);
+					NewLogEntry("ERR: Request timed out", inst->p_log);
 					inst->status = ERROR_TIMEOUT_REQ;
 					inst->last_error = ERROR_TIMEOUT_REQ;
 					inst->internal.step = CREATE_REQUEST;
@@ -299,7 +299,7 @@ void MBmaster(struct MBmaster* inst)
 			// Success 		
 			if(inst->internal.tcp_close.status == 0)
 			{
-				NewLogEntry("Port closed", inst->log);
+				NewLogEntry("Port closed", inst->p_log);
 				inst->internal.send_timer[0] = 0;
 				inst->internal.step = WAIT;
 			}
@@ -332,7 +332,7 @@ void MBmaster(struct MBmaster* inst)
 // ------------------------------------------------------------------------------------------------- 
 // Create new request to slave 
 // ------------------------------------------------------------------------------------------------- 
-UINT create_request_to_slave(struct modbus_master_cfg_typ* config, USINT 	req_nr,	USINT* send_buff, UINT size_buf, UINT transaction_id, modbus_log_typ LOGBOOK)
+UINT create_request_to_slave(struct modbus_master_cfg_typ* config, USINT req_nr, USINT* send_buff, UINT size_buf, UINT transaction_id, UDINT p_log)
 {
 	UINT	uint_var;
 	INT		int_var;
@@ -475,11 +475,11 @@ UINT create_request_to_slave(struct modbus_master_cfg_typ* config, USINT 	req_nr
 
 		default:
 			// Unsupported function code 
-			NewLogEntry("ERR: Client function code", LOGBOOK);
+			NewLogEntry("ERR: Client function code", p_log);
 			break;
 	}
 	// Create log entry 
-	MessageLog (TYP_REQUEST, (*config).action_param[req_nr].type, (*config).action_param[req_nr].start_addr, (*config).action_param[req_nr].quantity, LOGBOOK);
+	MessageLog (TYP_REQUEST, (*config).action_param[req_nr].type, (*config).action_param[req_nr].start_addr, (*config).action_param[req_nr].quantity, p_log);
 
 	// Length: 2 byte 
 	uint_var = MySwapUINT(data_len);
@@ -490,7 +490,7 @@ UINT create_request_to_slave(struct modbus_master_cfg_typ* config, USINT 	req_nr
 // ------------------------------------------------------------------------------------------------- 
 // Analyse response from slave 
 // ------------------------------------------------------------------------------------------------- 
-UINT analyze_answer_from_slave(struct modbus_master_cfg_typ* config,USINT req_nr, USINT* receive_buff, UINT transaction_id, modbus_log_typ LOGBOOK)
+UINT analyze_answer_from_slave(struct modbus_master_cfg_typ* config,USINT req_nr, USINT* receive_buff, UINT transaction_id, UDINT p_log)
 {
 	INT		int_var;
 	UINT	uint_var, receive_tr_id, protocol_id, length;
@@ -562,11 +562,11 @@ UINT analyze_answer_from_slave(struct modbus_master_cfg_typ* config,USINT req_nr
 			default:
 				// Unsupported function code 
 				if ((function_code > WRITE_SINGLE_REGISTER) && ((function_code != WRITE_MULTIPLE_COILS) && (function_code != WRITE_MULTIPLE_REGISTERS)))
-					NewLogEntry("ERR: Server function code", LOGBOOK);
+					NewLogEntry("ERR: Server function code", p_log);
 				break;
 		}
 		// Create log entry 
-		MessageLog (TYP_RESPONSE, function_code, 0, 0, LOGBOOK);
+		MessageLog (TYP_RESPONSE, function_code, 0, 0, p_log);
 	}
 	// Generate error on function exception from slave 
 	else if(function_code >= 0x80)
@@ -574,20 +574,20 @@ UINT analyze_answer_from_slave(struct modbus_master_cfg_typ* config,USINT req_nr
 		function_code -= 0x80;
 		switch(receive_buff[8])
 			{
-				case 1: NewLogEntry("ERR: Server->Bad function", LOGBOOK); break; 	
-				case 2: NewLogEntry("ERR: Server->Data address", LOGBOOK); break; 	
-				case 3: NewLogEntry("ERR: Server->Data value", LOGBOOK); break; 	
-				case 4: NewLogEntry("ERR: Server->Device failure", LOGBOOK); break; 	
-				case 5: NewLogEntry("ERR: Server->Exception ack", LOGBOOK); break; 	
-				case 6: NewLogEntry("ERR: Server->Slave busy", LOGBOOK); break; 	
-				case 10: NewLogEntry("ERR: Server->Path unavailable", LOGBOOK); break; 	
-				default: NewLogEntry("ERR: Server->unknown", LOGBOOK); break; 	
+				case 1: NewLogEntry("ERR: Server->Bad function", p_log); break; 	
+				case 2: NewLogEntry("ERR: Server->Data address", p_log); break; 	
+				case 3: NewLogEntry("ERR: Server->Data value", p_log); break; 	
+				case 4: NewLogEntry("ERR: Server->Device failure", p_log); break; 	
+				case 5: NewLogEntry("ERR: Server->Exception ack", p_log); break; 	
+				case 6: NewLogEntry("ERR: Server->Slave busy", p_log); break; 	
+				case 10: NewLogEntry("ERR: Server->Path unavailable", p_log); break; 	
+				default: NewLogEntry("ERR: Server->unknown", p_log); break; 	
 			}
 		return 1;
 	}
 	else
 	{
-		NewLogEntry("ERR: Bad slave message", LOGBOOK);
+		NewLogEntry("ERR: Bad slave message", p_log);
 		return 1;
 	}
 	return 0;

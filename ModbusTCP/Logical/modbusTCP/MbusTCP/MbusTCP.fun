@@ -5,7 +5,7 @@ FUNCTION_BLOCK MBslave (*ModbusTCP slave implementation*)
 		device : UDINT; (*Ethernet device string*)
 		port : UINT; (*Port number of the slave (default 502)*)
 		p_cfg : REFERENCE TO modbus_slave_cfg_typ; (*Pointer to data*)
-		log : modbus_log_typ; (*Log of FUB runtime actions*)
+		p_log : UDINT; (*Pointer to logger array*)
 		master_timeout : UDINT; (*Master has to send at least one request within this time (ms).  (0 to disable)*)
 	END_VAR
 	VAR_OUTPUT
@@ -24,8 +24,8 @@ FUNCTION_BLOCK MBmaster (*ModbusTCP master implementation*)
 		device : UDINT; (*Ethernet device string*)
 		port : UINT; (*Port number of the slave (default 502)*)
 		slave_ip_addr : STRING[18]; (*IP address of the slave*)
-		p_cfg : REFERENCE TO modbus_master_cfg_typ; (*Pointer to data*)
-		log : modbus_log_typ; (*Log of FUB runtime actions*)
+		p_cfg : REFERENCE TO modbus_master_cfg_typ; (*Pointer to configuration data*)
+		p_log : UDINT; (*Pointer to logger array*)
 		cycle_time : UDINT; (*Task class cycle time in ms*)
 	END_VAR
 	VAR_OUTPUT

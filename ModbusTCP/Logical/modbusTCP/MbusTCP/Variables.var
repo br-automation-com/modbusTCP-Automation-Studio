@@ -56,5 +56,6 @@ VAR CONSTANT
 	BUSY : UINT := 65535;
 	RECEIVE_TIMEOUT : UINT := 5000;
 	DEBUG_LEVEL : USINT := 2;
-	LOG_LINE_LEN : USINT := 50;
+	LOG_LINE_NUM : USINT := 50; (*Number of log entries*)
+	LOG_LINE_LEN : USINT := 100; (*Size of one log entry*)
 END_VAR
