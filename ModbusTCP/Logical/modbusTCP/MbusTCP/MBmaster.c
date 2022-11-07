@@ -118,10 +118,15 @@ void MBmaster(struct MBmaster* inst)
 					NewLogEntry("Trying to connect...", inst->p_log);
 					inst->internal.step = WAIT_CONNECTION;
 				}
-				else if(inst->internal.tcp_open.status != BUSY) inst->internal.step = ERROR;
+				else if(inst->internal.tcp_open.status != BUSY) 
+				{
+					NewLogEntry("ERR: open port failed", inst->p_log);
+					inst->internal.step = ERROR;
+				}
 				inst->status = inst->internal.tcp_open.status;
 			}
-			else inst->status = 65534;
+			else inst->internal.step = CLOSE_PORT;
+			inst->status = inst->internal.tcp_open.status;
 		break;
 		// ------------------------------------------------------------------------------------------ 
 		// Open ethernet port 

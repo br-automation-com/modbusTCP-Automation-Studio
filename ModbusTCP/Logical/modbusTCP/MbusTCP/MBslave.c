@@ -138,7 +138,11 @@ void MBslave(struct MBslave* inst)
 				
 					inst->internal.step = WAIT_REQUEST;
 				}
-				else if(inst->internal.tcp_open.status != BUSY) inst->internal.step = ERROR;
+				else if(inst->internal.tcp_open.status != BUSY) 
+				{
+					NewLogEntry("ERR: open port failed", inst->p_log);
+					inst->internal.step = ERROR;
+				}
 			}
 			else inst->internal.step = CLOSE_PORT;
 			inst->status = inst->internal.tcp_open.status;
