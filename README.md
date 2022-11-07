@@ -5,10 +5,11 @@ See [**description**](https://github.com/br-automation-com/modbusTCP-Automation-
 
 ## Revision History
 Version 2.0
-CHANGE: Ported library to AS4
-CHANGE: Added device configuration error to slave
-CHANGE: Changed logger structure to pointer with fixed size
-CHANGE: Added error message to port open steps
-CHANGE: Auto detect cycle time in master
-CHANGE: Added configuration constants
-CHANGE: Updated configuration
+
+- CHANGE: Ported library to AS4
+- CHANGE: Added device configuration error to slave
+- CHANGE: Changed logger structure to pointer with fixed size
+- CHANGE: Added error message to port open steps
+- CHANGE: Auto detect cycle time in master
+- CHANGE: Added configuration constants
+- CHANGE: Updated configuration
