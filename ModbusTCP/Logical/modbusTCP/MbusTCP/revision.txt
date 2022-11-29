@@ -1,4 +1,8 @@
 --------------------------------------------------------------------------------------------------------
+Version 2.1
+SLAVE: Changed default port to 502
+
+--------------------------------------------------------------------------------------------------------
 Version 2.0
 CHANGE: Ported library to AS4
 CHANGE: Added device configuration error to slave
