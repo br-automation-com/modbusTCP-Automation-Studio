@@ -64,7 +64,7 @@ void MBslave(struct MBslave* inst)
 			if((sizeof(inst->internal.master_info)/sizeof(inst->internal.master_info[0]) != sizeof(inst->internal.tcp_receive)/sizeof(inst->internal.tcp_receive[0])) ||
 				(sizeof(inst->internal.receive_buff)/sizeof(inst->internal.receive_buff[0]) != sizeof(inst->internal.tcp_receive)/sizeof(inst->internal.tcp_receive[0])))
 			{
-				NewLogEntry("Configuration missmatch num masters", inst->p_log);
+				NewLogEntry("Configuration mismatch num masters", inst->p_log);
 				inst->status 		= 50110;
 				inst->internal.step = ERROR;
 				break;
